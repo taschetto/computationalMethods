@@ -5,13 +5,13 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language brazilian
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman lmodern
+\font_roman default
 \font_sans default
-\font_typewriter lmtt
+\font_typewriter default
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -27,7 +27,7 @@
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize default
 \use_geometry true
 \use_amsmath 1
 \use_esint 1
@@ -66,13 +66,16 @@
 \begin_body
 
 \begin_layout Title
+
+\lang brazilian
 Interpolação 
 \emph on
-\lang english
 Spline
 \end_layout
 
 \begin_layout Author
+
+\lang brazilian
 Guilherme Taschetto
 \begin_inset Newline newline
 \end_inset
@@ -85,6 +88,8 @@ Cristiano Guilloux
 \end_layout
 
 \begin_layout Abstract
+
+\lang brazilian
 Interpolação é o método que permite construir um novo conjunto de dados
  a partir de um conjunto discreto de dados pontuais previamente conhecidos.
  Entre os diferentes métodos disponíveis, a interpolação 
@@ -99,18 +104,20 @@ splines
 \emph default
  através de sua aplicação no ambiente matemático 
 \emph on
-\lang latin
 Maxima
 \emph default
-\lang brazilian
 .
 \end_layout
 
 \begin_layout Section
+
+\lang brazilian
 Introdução
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 Segundo 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -143,6 +150,8 @@ reference "FiguraRyu"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset Float figure
 placement H
 wide false
@@ -151,6 +160,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
+
+\lang brazilian
 \begin_inset Graphics
 	filename imagens/Interpolation_example_polynomial.svg
 	width 25page%
@@ -161,9 +172,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang brazilian
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang brazilian
 Dados amostrados e função interpoladora sobreposta.
 \end_layout
 
@@ -185,6 +200,8 @@ name "FiguraInterpolação"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset Float figure
 placement H
 wide false
@@ -193,6 +210,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
+
+\lang brazilian
 \begin_inset Graphics
 	filename imagens/interpolation2.gif
 	width 50page%
@@ -203,9 +222,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang brazilian
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang brazilian
 Comparativo entre imagem original e após passar por um processo de interpolação.
 \end_layout
 
@@ -227,6 +250,8 @@ name "FiguraRyu"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 Existem diferentes métodos numéricos de interpolação e suas as aplicações
  são inúmeras nas áreas de ciências exatas, como matemática científica,
  economia, computação e engenharia.
@@ -244,22 +269,23 @@ splines
 \emph default
  através de sua aplicação no ambiente matemático 
 \emph on
-\lang latin
 Maxima
 \emph default
-\lang brazilian
 .
 \end_layout
 
 \begin_layout Section
 
 \emph on
+\lang brazilian
 Splines
 \emph default
  Cúbicos
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 Dada uma função 
 \begin_inset Formula $f$
 \end_inset
@@ -274,10 +300,8 @@ Dada uma função
 
 , a 
 \emph on
-\lang english
 spline
 \emph default
-\lang brazilian
  cúbica interpoladora 
 \begin_inset Formula $S$
 \end_inset
@@ -290,6 +314,8 @@ spline
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 \begin_inset Formula $S(x)$
 \end_inset
 
@@ -309,6 +335,8 @@ spline
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 \begin_inset Formula $S(x_{j})=f(x_{j})$
 \end_inset
 
@@ -320,6 +348,8 @@ spline
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 \begin_inset Formula $S_{j+1}(x_{j+1})=S_{j}(x_{j+1})$
 \end_inset
 
@@ -331,6 +361,8 @@ spline
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 \begin_inset Formula $S_{j+1}^{'}(x_{j+1})=S_{j}^{'}(x_{j+1})$
 \end_inset
 
@@ -342,6 +374,8 @@ spline
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 \begin_inset Formula $S_{j+1}^{''}(x_{j+1})=S_{j}^{''}(x_{j+1})$
 \end_inset
 
@@ -353,11 +387,15 @@ spline
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 Uma das seguintes condições de limite é satisfeita:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
+
+\lang brazilian
 \begin_inset Formula $S^{'''}(x_{0})=S^{''}(x_{n})=0$
 \end_inset
 
@@ -365,6 +403,8 @@ Uma das seguintes condições de limite é satisfeita:
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 \begin_inset Formula $S^{'}(x_{0})=f^{'}(x_{0})$
 \end_inset
 
@@ -377,25 +417,21 @@ Uma das seguintes condições de limite é satisfeita:
 
 \end_deeper
 \begin_layout Standard
+
+\lang brazilian
 Cada uma das condições de limite da origem à um tipo de 
 \emph on
-\lang english
 spline
 \emph default
-\lang brazilian
 .
  Quando ocorre a condição de limite natural ocorre, a 
 \emph on
-\lang english
 spline
 \emph default
-\lang brazilian
  é chamada de 
 \emph on
-\lang english
 spline
 \emph default
-\lang brazilian
  natural.
  Por outro lado, quando a condição de limite fixado é utilizada, a tendência
  é obter-se um resultado mais preciso, uma vez leva em conta a informação
@@ -403,10 +439,14 @@ spline
 \end_layout
 
 \begin_layout Section
+
+\lang brazilian
 Algoritmo e Complexidade
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Burden2008"
@@ -422,14 +462,14 @@ reference "AlgoritmoSpline"
 
  para implementação da interpolação 
 \emph on
-\lang english
 spline
 \emph default
-\lang brazilian
 .
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset Float algorithm
 wide false
 sideways false
@@ -437,6 +477,8 @@ status open
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang brazilian
 Entrada 
 \begin_inset Formula $n;$
 \end_inset
@@ -454,6 +496,8 @@ Entrada
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang brazilian
 Saída 
 \begin_inset Formula $a_{j},b_{j},c_{j},d_{j}$
 \end_inset
@@ -467,6 +511,8 @@ Saída
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang brazilian
 Passo
 \begin_inset space ~
 \end_inset
@@ -484,6 +530,8 @@ Passo
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang brazilian
 Passo
 \begin_inset space ~
 \end_inset
@@ -501,6 +549,8 @@ Passo
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang brazilian
 Passo
 \begin_inset space ~
 \end_inset
@@ -514,6 +564,8 @@ Passo
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang brazilian
 Passo
 \begin_inset space ~
 \end_inset
@@ -551,6 +603,8 @@ Passo
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang brazilian
 Passo
 \begin_inset space ~
 \end_inset
@@ -564,6 +618,8 @@ Passo
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\lang brazilian
 Passo
 \begin_inset space ~
 \end_inset
@@ -600,12 +656,13 @@ Passo
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang brazilian
 \begin_inset Caption
 
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 Spline
 \emph default
 \lang brazilian
@@ -630,6 +687,8 @@ name "AlgoritmoSpline"
 \end_layout
 
 \begin_layout Itemize
+
+\lang brazilian
 Os passos 1 e 2 compreendem dois laços de 
 \begin_inset Formula $n$
 \end_inset
@@ -642,6 +701,8 @@ Os passos 1 e 2 compreendem dois laços de
 \end_layout
 
 \begin_layout Itemize
+
+\lang brazilian
 Os passos 3 e 5 compreende somente atribuições: 
 \begin_inset Formula $O(1)$
 \end_inset
@@ -650,6 +711,8 @@ Os passos 3 e 5 compreende somente atribuições:
 \end_layout
 
 \begin_layout Itemize
+
+\lang brazilian
 Os passos 4 e 6 também são compostos por dois laços de 
 \begin_inset Formula $n$
 \end_inset
@@ -662,11 +725,15 @@ Os passos 4 e 6 também são compostos por dois laços de
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 Como todos os passos
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang brazilian
 Os passos 3, 4, 5 e parte do 6 realizam a resolução de um sistema tridiagonal
  de equações lineares.
  Ver 
@@ -697,20 +764,22 @@ key "Burden2008"
 \end_layout
 
 \begin_layout Section
+
+\lang brazilian
 Descrição do Problema
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 De posse de um arquivo 
 \emph on
 JPG
 \emph default
  contendo símbolos alfabéticos de uma fonte 
 \emph on
-\lang english
 True type
 \emph default
-\lang brazilian
  fornecida, selecionar um símbolo.
  Sobre a imagem deste símbolo, realizar a amostragem de um conjunto de 
 \begin_inset Formula $n$
@@ -736,10 +805,7 @@ True type
 
 ), utilizando a interpolação 
 \emph on
-\lang english
-spline
-\lang brazilian
- 
+spline 
 \emph default
 cúbica, obtendo uma representação paramétrica do símbolo.
  De posse das funções interpoladoras, ser capaz de desenhar uma representação
@@ -747,27 +813,39 @@ cúbica, obtendo uma representação paramétrica do símbolo.
 \end_layout
 
 \begin_layout Section
+
+\lang brazilian
 Solução
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 A solução foi realizada pela seguinte sequência de passos:
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 Seleção do símbolo alfabético e amostragem de alguns pontos que compõem
  o símbolo;
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 Geração das funções de interpolação com base nos pontos amostrados;
 \end_layout
 
 \begin_layout Enumerate
+
+\lang brazilian
 Reconstrução da curva original utilizando as funções interpoladoras.
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 A listagem de artefatos utilizados na solução encontra-se no apêndice 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -779,10 +857,14 @@ reference "sec:Listagem-de-Artefatos"
 \end_layout
 
 \begin_layout Subsection
+
+\lang brazilian
 Seleção do Símbolo e Amostragem
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 Selecionou-se o símbolo alfabético X maiúsculo da fonte 
 \emph on
 Invitation Script
@@ -810,59 +892,40 @@ reference "FiguraX"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 A amostragem de pontos foi realizada através da ferramenta 
 \emph on
-\lang english
-Path
-\lang brazilian
- 
-\lang english
-Tool
+Path Tool
 \emph default
-\lang brazilian
  do software 
 \emph on
-\lang english
 Gimp
 \emph default
-\lang brazilian
 .
  Foi feita a extração
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang brazilian
 Detalhe de implementação: antes de utilizar a ferramenta 
 \emph on
-\lang english
-Export
-\lang brazilian
- 
-\lang english
-Path
-\lang brazilian
- 
+Export Path 
 \emph default
 foi realizado o procedimento 
 \emph on
-\lang english
-Flip
-\lang brazilian
- Vertical
+Flip Vertical
 \emph default
 , a fim de inverter a imagem verticalmente no 
 \emph on
-\lang english
 Gimp
 \emph default
-\lang brazilian
 .
  Isto se dá em função do sistema de coordenadas do 
 \emph on
-\lang english
-Gimp
-\lang brazilian
- 
+Gimp 
 \emph default
 utilizar como origem do plano cartesiano o canto superior esquerdo da tela,
  e não o canto inferior esquerdo, como é comum na matemática e engenharia.
@@ -872,14 +935,8 @@ utilizar como origem do plano cartesiano o canto superior esquerdo da tela,
 
  do conjunto amostrado utilizando a ferramenta 
 \emph on
-\lang english
-Export
-\lang brazilian
- 
-\lang english
-Path
+Export Path
 \emph default
-\lang brazilian
  e salvo em um arquivo 
 \emph on
 SVG
@@ -892,6 +949,8 @@ PNG
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset Float figure
 placement H
 wide false
@@ -900,6 +959,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
+
+\lang brazilian
 \begin_inset Graphics
 	filename imagens/letra_gimp.png
 
@@ -909,9 +970,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang brazilian
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang brazilian
 Letra X maiúscula (
 \emph on
 Invitation Script
@@ -961,12 +1026,12 @@ name "FiguraX"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 Utilizando o script 
 \emph on
-\lang english
 Python
 \emph default
-\lang brazilian
  
 \emph on
 parse_svg.py
@@ -1018,12 +1083,12 @@ SVG
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 Utilizando o script 
 \emph on
-\lang latin
 Maxima
 \emph default
-\lang brazilian
  
 \emph on
 splines.mac
@@ -1048,6 +1113,8 @@ reference "FiguraAmostras"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset Float figure
 placement H
 wide false
@@ -1056,6 +1123,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
+
+\lang brazilian
 \begin_inset Graphics
 	filename graph_samples.svg
 	width 70page%
@@ -1066,9 +1135,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang brazilian
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang brazilian
 Gráfico discreto das amostras.
 \end_layout
 
@@ -1090,16 +1163,18 @@ name "FiguraAmostras"
 \end_layout
 
 \begin_layout Subsection
+
+\lang brazilian
 Geração das Funções Interpoladoras
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 No script 
 \emph on
-\lang latin
 Maxima
 \emph default
-\lang brazilian
  
 \emph on
 splines.mac
@@ -1122,10 +1197,8 @@ splines.mac
 
  do ambiente 
 \emph on
-\lang latin
 Maxima
 \emph default
-\lang brazilian
 .
  Estas funções, representadas graficamente na figura 
 \begin_inset CommandInset ref
@@ -1160,6 +1233,8 @@ reference "FiguraSxSy"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset Float figure
 wide false
 sideways false
@@ -1167,6 +1242,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
+
+\lang brazilian
 \begin_inset Graphics
 	filename graph_sx.svg
 	width 70page%
@@ -1177,9 +1254,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang brazilian
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang brazilian
 Representação gráfica das funções interpoladoras 
 \begin_inset Formula $S_{x}(t)$
 \end_inset
@@ -1207,20 +1288,20 @@ name "FiguraSxSy"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Subsection
+
+\lang brazilian
 Reconstrução da Curva
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 De posse das funções interpoladoras 
 \begin_inset Formula $S_{x}(t)$
 \end_inset
@@ -1232,10 +1313,8 @@ De posse das funções interpoladoras
  e sabendo que as mesmas representam a curva de forma paramétrica, o script
  script 
 \emph on
-\lang latin
 Maxima
 \emph default
-\lang brazilian
  
 \emph on
 splines.mac
@@ -1266,6 +1345,8 @@ reference "FiguraResultados"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset Float figure
 placement H
 wide false
@@ -1274,6 +1355,8 @@ status collapsed
 
 \begin_layout Plain Layout
 \align center
+
+\lang brazilian
 \begin_inset Graphics
 	filename graph_both.svg
 	width 70page%
@@ -1284,9 +1367,13 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
+
+\lang brazilian
 \begin_inset Caption
 
 \begin_layout Plain Layout
+
+\lang brazilian
 Resultado da interpolação 
 \emph on
 \lang english
@@ -1314,10 +1401,14 @@ name "FiguraResultados"
 \end_layout
 
 \begin_layout Section
+
+\lang brazilian
 Conclusões
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 Ao estudar e experimentar métodos númericos de interpolação fica clara a
  importância destas ferramentas na vida cotidiana, seja ela pessoal, profissiona
 l ou científica.
@@ -1337,6 +1428,8 @@ spline
 \end_layout
 
 \begin_layout Bibliography
+
+\lang brazilian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "1"
@@ -1352,6 +1445,8 @@ CAMPOS FILHO, F.
 \end_layout
 
 \begin_layout Bibliography
+
+\lang brazilian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "2"
@@ -1359,8 +1454,6 @@ key "Burden2008"
 
 \end_inset
 
-
-\lang english
 BURDEN; R.
  L.; FAIRES, J.
  D.
@@ -1370,6 +1463,8 @@ BURDEN; R.
 \end_layout
 
 \begin_layout Bibliography
+
+\lang brazilian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 label "3"
@@ -1397,6 +1492,8 @@ target "http://pt.wikipedia.org/wiki/Interpola%C3%A7%C3%A3o"
 
 \begin_layout Section
 \start_of_appendix
+
+\lang brazilian
 Listagem de Artefatos
 \begin_inset CommandInset label
 LatexCommand label
@@ -1410,10 +1507,9 @@ name "sec:Listagem-de-Artefatos"
 \begin_layout Description
 
 \emph on
-\lang english
+\lang brazilian
 Gimp
 \emph default
-\lang brazilian
  Software de edição de imagens.
  Utilizado para selecionar e extrair um conjunto de pontos (amostras) da
  figura original.
@@ -1422,21 +1518,18 @@ Gimp
 \begin_layout Description
 
 \emph on
+\lang brazilian
 parse_svg.py
 \emph default
  Script na linguagem 
 \emph on
-\lang english
 Python
 \emph default
-\lang brazilian
 .
  Utilizado para extração dos dados do formato gerado pelo 
 \emph on
-\lang english
 Gimp
 \emph default
-\lang brazilian
  para formato texto, mais fácil de manipular utilizando linguagens de programaçã
 o.
 \end_layout
@@ -1444,16 +1537,13 @@ o.
 \begin_layout Description
 
 \emph on
-\lang latin
+\lang brazilian
 Maxima
 \emph default
-\lang brazilian
  Ambiente matemático computacional, escrito em linguagem 
 \emph on
-\lang english
 Lisp
 \emph default
-\lang brazilian
 .
  Utilizado para leitura dos dados de entrada, cálculo das funções interpoladoras
  e geração dos gráficos.
@@ -1462,20 +1552,21 @@ Lisp
 \begin_layout Description
 
 \emph on
+\lang brazilian
 splines.mac
 \emph default
  Script na linguagem 
 \emph on
-\lang latin
 Maxima
 \emph default
-\lang brazilian
 .
  Utilizado para armazenar a sequência de comandos necessários para a realização
  do projeto.
 \end_layout
 
 \begin_layout Section
+
+\lang brazilian
 Listagem 
 \emph on
 parse_svg.py
@@ -1489,6 +1580,8 @@ name "sec:Listagem-parse_svg.py"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset listings
 lstparams "basicstyle={\small\ttfamily},language=Python,numbers=left,numberstyle={\small},showstringspaces=false,tabsize=2"
 inline false
@@ -1496,16 +1589,19 @@ status open
 
 \begin_layout Plain Layout
 
+\lang brazilian
 import xml.etree.ElementTree as etree
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 import re
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 import sys
 \end_layout
 
@@ -1515,6 +1611,7 @@ import sys
 
 \begin_layout Plain Layout
 
+\lang brazilian
 __author__ = 'Ramon Costi Fernandes <ramon.fernandes@acad.pucrs.br>'
 \end_layout
 
@@ -1524,26 +1621,31 @@ __author__ = 'Ramon Costi Fernandes <ramon.fernandes@acad.pucrs.br>'
 
 \begin_layout Plain Layout
 
+\lang brazilian
 SVG_namespace = "http://www.w3.org/2000/svg"
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 SVG_fname = ''
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 OUTPUT_fname = 'output.txt'
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 coordinates_list = []
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 output_list = []
 \end_layout
 
@@ -1553,16 +1655,19 @@ output_list = []
 
 \begin_layout Plain Layout
 
+\lang brazilian
 #Instrucoes de uso.
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 def usage():
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	print("Como executar:
 \backslash
 n")
@@ -1570,21 +1675,25 @@ n")
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	print("{} <{}>".format(sys.argv[0], "SVG input file"))
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	print("ou")
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	print("{} <{}> <{}>".format(sys.argv[0], "SVG input file", "OUTPUT file"))
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	sys.exit(1)
 \end_layout
 
@@ -1594,41 +1703,49 @@ n")
 
 \begin_layout Plain Layout
 
+\lang brazilian
 # Remove as coordenadas duplicadas do arquivo SVG de entrada.
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 def remove_duplicates(coord_list):
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	global coordinates_list
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	temp_list = []
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	for item in coord_list:
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		if item not in temp_list:
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 			temp_list.append(item)
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	coordinates_list = temp_list
 \end_layout
 
@@ -1638,31 +1755,37 @@ def remove_duplicates(coord_list):
 
 \begin_layout Plain Layout
 
+\lang brazilian
 #Enumera os pontos.
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 def enumerate_coordinates():
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	count = 1
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	for item in coordinates_list:
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		coord = re.split(",", item)
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		output_list.append("{} {} {}
 \backslash
 n".format(count, coord[0], coord[1]))
@@ -1670,6 +1793,7 @@ n".format(count, coord[0], coord[1]))
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		count += 1
 \end_layout
 
@@ -1679,26 +1803,31 @@ n".format(count, coord[0], coord[1]))
 
 \begin_layout Plain Layout
 
+\lang brazilian
 #Gera o arquivo de saida.
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 def write_output_file():
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	file = open(OUTPUT_fname, "w+")
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	for item in output_list:
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		file.write("".join(str(s) for s in item) + "
 \backslash
 n")
@@ -1706,6 +1835,7 @@ n")
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	file.close()
 \end_layout
 
@@ -1715,36 +1845,43 @@ n")
 
 \begin_layout Plain Layout
 
+\lang brazilian
 #Processa o arquivo XML de entrada.
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 def parse_xml():
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	global coordinates_list
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	tree = etree.parse(SVG_fname)
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	root = tree.getroot()
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	coordinates = root.find('.//{%s}path' % SVG_namespace).get("d")
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	coordinates_list = re.findall("[0-9]+
 \backslash
 .[0-9]+,[0-9]+
@@ -1758,26 +1895,31 @@ def parse_xml():
 
 \begin_layout Plain Layout
 
+\lang brazilian
 if __name__ == "__main__":
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	if len(sys.argv) < 2:
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		usage()
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	elif len(sys.argv) < 3:
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		print("Gravando resultados no arquivo de saida 
 \backslash
 "{}
@@ -1789,16 +1931,19 @@ n".format(OUTPUT_fname))
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	elif len(sys.argv) == 3:
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		OUTPUT_fname = sys.argv[2]
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		print("Gravando resultados no arquivo de saida 
 \backslash
 "{}
@@ -1810,11 +1955,13 @@ n".format(OUTPUT_fname))
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	else:
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		usage()
 \end_layout
 
@@ -1824,26 +1971,31 @@ n".format(OUTPUT_fname))
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	SVG_fname = sys.argv[1]
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	parse_xml()
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	remove_duplicates(coordinates_list)
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	enumerate_coordinates()
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	write_output_file()
 \end_layout
 
@@ -1853,6 +2005,8 @@ n".format(OUTPUT_fname))
 \end_layout
 
 \begin_layout Section
+
+\lang brazilian
 Listagem 
 \emph on
 splines.mac
@@ -1866,6 +2020,8 @@ name "sec:Listagem-splines.mac"
 \end_layout
 
 \begin_layout Standard
+
+\lang brazilian
 \begin_inset listings
 lstparams "basicstyle={\small\ttfamily},language=Lisp,numbers=left,numberstyle={\small},showstringspaces=false,tabsize=2"
 inline false
@@ -1873,6 +2029,7 @@ status open
 
 \begin_layout Plain Layout
 
+\lang brazilian
 /* Author: Guilherme Taschetto (gtaschetto@gmail.com)  */
 \end_layout
 
@@ -1882,6 +2039,7 @@ status open
 
 \begin_layout Plain Layout
 
+\lang brazilian
 load(interpol)$
 \end_layout
 
@@ -1891,22 +2049,26 @@ load(interpol)$
 
 \begin_layout Plain Layout
 
+\lang brazilian
 input_data: read_matrix("output.txt")$
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 samples: makelist([second(input_data[i]), third(input_data[i])], i, 1, length(in
 put_data))$
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 x: submatrix(input_data, 3)$
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 y: submatrix(input_data, 2)$
 \end_layout
 
@@ -1916,21 +2078,25 @@ y: submatrix(input_data, 2)$
 
 \begin_layout Plain Layout
 
+\lang brazilian
 cspline(x)$
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 Sx(x) := ''%$
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 cspline(y)$
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 Sy(x) := ''%$
 \end_layout
 
@@ -1940,51 +2106,61 @@ Sy(x) := ''%$
 
 \begin_layout Plain Layout
 
+\lang brazilian
 plot2d(
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[discrete, samples],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[style, [points, 1, 2, 1]],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[legend, "Amostras"],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[xlabel, ""],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[ylabel, ""],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[gnuplot_term, "svg size 520,310"],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[gnuplot_out_file, "graph_samples.svg"],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[gnuplot_preamble, "set key bottom"]
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 )$
 \end_layout
 
@@ -1994,86 +2170,103 @@ plot2d(
 
 \begin_layout Plain Layout
 
+\lang brazilian
 plot2d(
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[Sx(t), Sy(t)],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[t, 1, 42],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[xlabel, "t"],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[ylabel, ""],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[legend,
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		"Sx(t)",
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		"Sy(t)"
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[style,
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		[lines, 2, 2],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		[lines, 2, 1]
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[gnuplot_term, "svg size 520,310"],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[gnuplot_out_file, "graph_sx.svg"],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[gnuplot_preamble, "set key bottom"]
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 )$
 \end_layout
 
@@ -2083,91 +2276,109 @@ plot2d(
 
 \begin_layout Plain Layout
 
+\lang brazilian
 plot2d(
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		[parametric, Sx(t), Sy(t), [t, 1, 42]],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		[discrete, samples]
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[legend,
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		"Splines",
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		"Amostras"
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[style,
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		[lines, 2, 1],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 		[points, 1, 2, 1]
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[nticks, 42 * 4],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[gnuplot_term, "svg size 520,310"],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[gnuplot_out_file, "graph_both.svg"],
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 	[gnuplot_preamble, "set key bottom"]
 \end_layout
 
 \begin_layout Plain Layout
 
+\lang brazilian
 )$
 \end_layout
 
