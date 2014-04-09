@@ -1,0 +1,58 @@
+/* Author: Guilherme Taschetto (gtaschetto@gmail.com)  */
+
+load(interpol)$
+samples: read_matrix("output.txt")$
+x: submatrix(samples, 3)$
+y: submatrix(samples, 2)$
+
+cspline(x)$
+Sx(x) := ''%$
+cspline(y)$
+Sy(x) := ''%$
+
+samples : makelist([second(samples[i]),third(samples[i])], i, 1, length(samples))$
+
+plot2d(
+  [discrete, samples],
+  [style, [points, 1, 2, 1]],
+  [legend, "Amostras"],
+  [xlabel, ""],
+  [ylabel, ""],
+  [gnuplot_term, "svg size 520,310"],
+  [gnuplot_out_file, "graph_samples.svg"],
+  [gnuplot_preamble, "set key bottom"]
+)$
+
+plot2d(
+  [Sx(t), Sy(t)],
+  [t, 1, 42],
+  [xlabel, "t"],
+  [ylabel, ""],
+  [legend,
+    "Sx(t)",
+    "Sy(t)"
+  ],
+  [style, [lines, 2, 2], [lines, 2, 1]],
+  [gnuplot_term, "svg size 520,310"],
+  [gnuplot_out_file, "graph_sx.svg"],
+  [gnuplot_preamble, "set key bottom"]
+)$
+
+plot2d(
+  [
+    [parametric, Sx(t), Sy(t), [t, 1, 42]],
+    [discrete, samples]
+  ],
+  [legend,
+    "Splines",
+    "Amostras"
+  ],
+  [style,
+    [lines, 2, 1],
+    [points, 1, 2, 1]
+  ],
+  [nticks, 42 * 4],
+  [gnuplot_term, "svg size 520,310"],
+  [gnuplot_out_file, "graph_both.svg"],
+  [gnuplot_preamble, "set key bottom"]
+)$
