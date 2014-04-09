@@ -1,16 +1,16 @@
 /* Author: Guilherme Taschetto (gtaschetto@gmail.com)  */
 
 load(interpol)$
-samples: read_matrix("output.txt")$
-x: submatrix(samples, 3)$
-y: submatrix(samples, 2)$
+
+input_data: read_matrix("output.txt")$
+samples: makelist([second(input_data[i]),third(input_data[i])], i, 1, length(input_data))$
+x: submatrix(input_data, 3)$
+y: submatrix(input_data, 2)$
 
 cspline(x)$
 Sx(x) := ''%$
 cspline(y)$
 Sy(x) := ''%$
-
-samples : makelist([second(samples[i]),third(samples[i])], i, 1, length(samples))$
 
 plot2d(
   [discrete, samples],
