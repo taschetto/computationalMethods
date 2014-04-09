@@ -5,13 +5,13 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language brazilian
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
+\font_roman lmodern
 \font_sans default
-\font_typewriter default
+\font_typewriter lmtt
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
@@ -43,10 +43,10 @@
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 2.5cm
-\topmargin 3.5cm
-\rightmargin 2.5cm
-\bottommargin 3.5cm
+\leftmargin 1.5cm
+\topmargin 2.5cm
+\rightmargin 1.5cm
+\bottommargin 2.5cm
 \footskip 1cm
 \secnumdepth 3
 \tocdepth 3
@@ -68,6 +68,7 @@
 \begin_layout Title
 Interpolação 
 \emph on
+\lang english
 Spline
 \end_layout
 
@@ -96,9 +97,13 @@ splines
 \emph on
 splines
 \emph default
- através de sua aplicação no ambiente matemático Maxima.
- Posteriormente é realizada uma análise nos resultados e reflexões sobre
- o método.
+ através de sua aplicação no ambiente matemático 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+.
 \end_layout
 
 \begin_layout Section
@@ -147,15 +152,8 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename imagens/Interpolation_Data.svg
-	width 30page%
-
-\end_inset
-
-
-\begin_inset Graphics
 	filename imagens/Interpolation_example_polynomial.svg
-	width 30page%
+	width 25page%
 
 \end_inset
 
@@ -240,6 +238,17 @@ splines
  métodos polinomiais mais triviais, e.
  g.
  interpolação de Lagrange e interpolação de Newton.
+ Este artigo realizada um estudo sobre interpolação 
+\emph on
+splines
+\emph default
+ através de sua aplicação no ambiente matemático 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+.
 \end_layout
 
 \begin_layout Section
@@ -265,8 +274,10 @@ Dada uma função
 
 , a 
 \emph on
+\lang english
 spline
 \emph default
+\lang brazilian
  cúbica interpoladora 
 \begin_inset Formula $S$
 \end_inset
@@ -368,186 +379,27 @@ Uma das seguintes condições de limite é satisfeita:
 \begin_layout Standard
 Cada uma das condições de limite da origem à um tipo de 
 \emph on
+\lang english
 spline
 \emph default
+\lang brazilian
 .
  Quando ocorre a condição de limite natural ocorre, a 
 \emph on
+\lang english
 spline
 \emph default
+\lang brazilian
  é chamada de 
 \emph on
+\lang english
 spline
 \emph default
+\lang brazilian
  natural.
  Por outro lado, quando a condição de limite fixado é utilizada, a tendência
  é obter-se um resultado mais preciso, uma vez leva em conta a informação
  da derivada da função.
-\end_layout
-
-\begin_layout Subsection
-
-\emph on
-Splines
-\emph default
- Cúbicos Naturais
-\end_layout
-
-\begin_layout Standard
-Seja o polinômio interpolador no formato 
-\begin_inset Formula $S_{j}(x)=a_{j}+b_{j}(x-x_{j})+c_{j}(x-x_{j})^{2}+d_{j}(x-x_{j})^{3}$
-\end_inset
-
-, obtém-se uma representação matricial do sistema de equações lineares 
-\begin_inset Formula $Ax=b$
-\end_inset
-
- quando a condição de limite natural é satisfeita 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Burden2008"
-
-\end_inset
-
-.
- A forma geral do sistema se dá por
-\begin_inset Formula 
-\begin{eqnarray*}
-A & = & \begin{bmatrix}1\\
-h_{0} & 2(h_{0}+h_{1}) & h_{1}\\
- & h_{1} & 2(h_{1}+h_{2}) & h_{2}\\
- &  & \ddots & \ddots & \ddots\\
- &  &  & h_{n-2} & 2(h_{n-2}+h_{n-1}) & h_{n-1}\\
- &  &  &  &  & 1
-\end{bmatrix}\\
-b & = & \begin{bmatrix}0\\
-\frac{3}{h_{1}}(a_{2}-a_{1})-\frac{3}{h_{0}}(a_{1}-a_{0})\\
-\vdots\\
-\frac{3}{h_{n-1}}(a_{n}-a_{n-1})-\frac{3}{h_{n-2}}(a_{n-1}-a_{n-2})\\
-0
-\end{bmatrix}\\
-x & = & \begin{bmatrix}c_{0}\\
-c_{1}\\
-\vdots\\
-c_{n}
-\end{bmatrix}
-\end{eqnarray*}
-
-\end_inset
-
-O termo 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $h_{j}=x_{j}+1-x_{j}$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- é utilizado para fins de simplificação.
-\end_layout
-
-\begin_layout Subsection
-
-\emph on
-Splines
-\emph default
- Cúbicos Fixados
-\end_layout
-
-\begin_layout Standard
-Seja o polinômio interpolador no formato 
-\begin_inset Formula $S_{j}(x)=a_{j}+b_{j}(x-x_{j})+c_{j}(x-x_{j})^{2}+d_{j}(x-x_{j})^{3}$
-\end_inset
-
-, obtém-se uma representação matricial do sistema de equações lineares 
-\begin_inset Formula $Ax=b$
-\end_inset
-
- quando a condição de limite fixado é satisfeita 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Burden2008"
-
-\end_inset
-
-.
- A forma geral do sistema se dá por
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-A & = & \begin{bmatrix}2h_{0} & h_{0}\\
-h_{0} & 2(h_{0}+h_{1}) & h_{1}\\
- & h_{1} & 2(h_{1}+h_{2}) & h_{2}\\
- &  & \ddots & \ddots & \ddots\\
- &  &  & h_{n-2} & 2(h_{n-2}+h_{n-1}) & h_{n-1}\\
- &  &  &  & h_{n-1} & 2h_{n-1}
-\end{bmatrix}\\
-b & = & \begin{bmatrix}\frac{3}{h_{0}}(a_{1}-a_{0})-3f^{'}(a)\\
-\frac{3}{h_{1}}(a_{2}-a_{1})-\frac{3}{h_{0}}(a_{1}-a_{0})\\
-\vdots\\
-\frac{3}{h_{n-1}}(a_{n}-a_{n-1})-\frac{3}{h_{n-2}}(a_{n-1}-a_{n-2})\\
-3f^{'}(b)-\frac{3}{h_{n-1}}(a_{n}-a_{n-1})
-\end{bmatrix}\\
-x & = & \begin{bmatrix}c_{0}\\
-c_{1}\\
-\vdots\\
-c_{n}
-\end{bmatrix}
-\end{eqnarray*}
-
-\end_inset
-
-O termo 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
-\begin_inset Formula $h_{j}=x_{j}+1-x_{j}$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- é utilizado para fins de simplificação.
 \end_layout
 
 \begin_layout Section
@@ -559,10 +411,12 @@ De posse de um arquivo
 \emph on
 JPG
 \emph default
- contendo simbolos alfabéticos de uma fonte 
+ contendo símbolos alfabéticos de uma fonte 
 \emph on
-Truetype
+\lang english
+True type
 \emph default
+\lang brazilian
  fornecida, selecionar um símbolo.
  Sobre a imagem deste símbolo, realizar a amostragem de um conjunto de 
 \begin_inset Formula $n$
@@ -572,7 +426,7 @@ Truetype
 \begin_inset Formula $(x,y)$
 \end_inset
 
-, de modo a representar, particialmente, o desenho do símbolo.
+, de modo a representar, parcialmente, o desenho do símbolo.
  Com base no conjunto de coordenadas amostradas, criar funções interpoladoras
  
 \begin_inset Formula $x=S_{x}(t)$
@@ -588,33 +442,14 @@ Truetype
 
 ), utilizando a interpolação 
 \emph on
-spline 
+\lang english
+spline
+\lang brazilian
+ 
 \emph default
 cúbica, obtendo uma representação paramétrica do símbolo.
  De posse das funções interpoladoras, ser capaz de desenhar uma representação
  da curva original.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Descrição da solução.
- Descrição do algoritmo numérico (
-\emph on
-cubic splines
-\emph default
-).
- Explicar por que o método utiliza derivadas.
- Identificar os artefatos utilizados para implementação do método e justificativ
-a da utilização.
- Complexidade do algoritmo (notação Big-O).
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -622,7 +457,7 @@ Solução
 \end_layout
 
 \begin_layout Standard
-A solução deu-se pela seguinte sequência de passos:
+A solução foi realizada pela seguinte sequência de passos:
 \end_layout
 
 \begin_layout Enumerate
@@ -639,7 +474,7 @@ Reconstrução da curva original utilizando as funções interpoladoras.
 \end_layout
 
 \begin_layout Standard
-Listagem de artefatos utilizados na solução encontra-se no apêndice 
+A listagem de artefatos utilizados na solução encontra-se no apêndice 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Listagem-de-Artefatos"
@@ -666,21 +501,100 @@ reference "FiguraX"
 \end_inset
 
 .
- A escolha deste símbolo deu-se devido ao fato de possuir trechos curvos
- de raios distintos, bem como trechos aproximados com retas, tornando possível
+ Este símbolo foi escolhido devido ao fato de possuir trechos curvos de
+ raios distintos, bem como trechos aproximados com retas, tornando possível
  avaliar resultados para uma curva com comportamento variado ao longo de
  seu comprimento.
- A amostragem de pontos foi realizada através da ferramenta 
-\emph on
-Path Tool
-\emph default
- do software 
-\emph on
-Gimp
-\emph default
-.
  Ao todo foram selecionados 42 pontos, de forma mais densa nos trechos mais
  curvos do símbolo do que nos trechos mais lineares.
+ O raciocínio utilizado foi de que, em regiões onde a curva é mais reta
+ e comportada, i.
+ e.
+ a derivada da curva é constante ou quase constante, a seleção de muitos
+ pontos gera redundâncias, uma vez que para criar uma reta é preciso de
+ apenas dois pontos.
+\end_layout
+
+\begin_layout Standard
+A amostragem de pontos foi realizada através da ferramenta 
+\emph on
+\lang english
+Path
+\lang brazilian
+ 
+\lang english
+Tool
+\emph default
+\lang brazilian
+ do software 
+\emph on
+\lang english
+Gimp
+\emph default
+\lang brazilian
+.
+ Foi feita a extração
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Detalhe de implementação: antes de utilizar a ferramenta 
+\emph on
+\lang english
+Export
+\lang brazilian
+ 
+\lang english
+Path
+\lang brazilian
+ 
+\emph default
+foi realizado o procedimento 
+\emph on
+\lang english
+Flip
+\lang brazilian
+ Vertical
+\emph default
+, a fim de inverter a imagem verticalmente no 
+\emph on
+\lang english
+Gimp
+\emph default
+\lang brazilian
+.
+ Isto se dá em função do sistema de coordenadas do 
+\emph on
+\lang english
+Gimp
+\lang brazilian
+ 
+\emph default
+utilizar como origem do plano cartesiano o canto superior esquerdo da tela,
+ e não o canto inferior esquerdo, como é comum na matemática e engenharia.
+\end_layout
+
+\end_inset
+
+ do conjunto amostrado utilizando a ferramenta 
+\emph on
+\lang english
+Export
+\lang brazilian
+ 
+\lang english
+Path
+\emph default
+\lang brazilian
+ e salvo em um arquivo 
+\emph on
+SVG
+\emph default
+ encapsulado em um arquivo 
+\emph on
+PNG
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -688,7 +602,7 @@ Gimp
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -718,12 +632,20 @@ e
 \emph default
 seleção de pontos usando a ferramenta 
 \emph on
-Path Tool
+\lang english
+Path
+\lang brazilian
+ 
+\lang english
+Tool
 \emph default
+\lang brazilian
  do software 
 \emph on
+\lang english
 Gimp
 \emph default
+\lang brazilian
 .
 \end_layout
 
@@ -745,79 +667,28 @@ name "FiguraX"
 \end_layout
 
 \begin_layout Standard
-Ainda através do 
+Utilizando o script 
 \emph on
-Gimp
+\lang english
+Python
 \emph default
-, foi feita a extração
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Detalhe de implementação: antes de utilizar a ferramenta 
-\emph on
-Export Path 
-\emph default
-foi realizado o procedimento 
-\emph on
-Flip Vertical
-\emph default
-, a fim de inverter a imagem verticalmente no 
-\emph on
-Gimp
-\emph default
-.
- Isto se dá em função do sistema de coordenadas do 
-\emph on
-Gimp 
-\emph default
-utilizar como origem do plano cartesiano o canto superior esquerdo da tela,
- e não o canto inferior esquerdo, como é comum na matemática e engenharia.
-\end_layout
-
-\end_inset
-
- do conjunto amostrado utilizando a ferramenta 
-\emph on
-Export Path
-\emph default
- e salvo em um arquivo 
-\emph on
-SVG
-\emph default
- encapsulado em um arquivo 
-\emph on
-PNG
-\emph default
-.
-\end_layout
-
-\begin_layout Standard
-De posse do arquivo 
-\emph on
-SVG
-\emph default
- foi executado o script 
+\lang brazilian
+ 
 \emph on
 parse_svg.py
 \emph default
-, escrito em linguagem Python e listado no apêndice 
+ (apêndice 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Listagem-parse_svg.py"
 
 \end_inset
 
-.
- Este script recebe como entrada um arquivo 
+) é possível extrair as coordenadas do arquivo 
 \emph on
 SVG
 \emph default
- e extrai as coordenadas
-\begin_inset space ~
-\end_inset
-
-em um arquivo texto 
+ em um arquivo texto 
 \begin_inset Formula $output.txt$
 \end_inset
 
@@ -845,7 +716,7 @@ em um arquivo texto
 \begin_inset Formula $x$
 \end_inset
 
- é o valor da abssissa e 
+ é o valor da abscissa e 
 \begin_inset Formula $y$
 \end_inset
 
@@ -853,16 +724,26 @@ em um arquivo texto
 \end_layout
 
 \begin_layout Standard
-No ambiente computacional Maxima é possível ler o arquivo de entrada e criar
- um gráfico de pontos utilizando as amostras, conforme o algoritmo 
+Utilizando o script 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+ 
+\emph on
+splines.mac
+\emph default
+ (apêndice 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "AlgoritmoAmostras"
+reference "sec:Listagem-splines.mac"
 
 \end_inset
 
-.
- O resultado é exibido na 
+) é possível ler o arquivo de entrada e criar um gráfico de pontos utilizando
+ as amostras.
+ O resultado é exibido na figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "FiguraAmostras"
@@ -873,104 +754,11 @@ reference "FiguraAmostras"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize\ttfamily},language=R,numbers=left,numberstyle={\footnotesize},showstringspaces=false,tabsize=2"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-samples: read_matrix("output.txt")$
-\end_layout
-
-\begin_layout Plain Layout
-
-samples: makelist([second(samples[i]),third(samples[i])], i, 1, length(samples))
-$
-\end_layout
-
-\begin_layout Plain Layout
-
-plot2d(
-\end_layout
-
-\begin_layout Plain Layout
-
-	[discrete, samples],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[style, [points, 1, 5, 1]],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[legend, "Amostras"],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[gnuplot_term, "svg size 640,480"],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[gnuplot_out_file, "graph_samples.svg"]
-\end_layout
-
-\begin_layout Plain Layout
-
-)$
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Leitura do arquivo e geração do gráfico
-\emph on
- 
-\emph default
-das amostras.
- 
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "AlgoritmoAmostras"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1012,14 +800,17 @@ Geração das Funções Interpoladoras
 \end_layout
 
 \begin_layout Standard
-O algoritmo 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "AlgoritmoInterpol"
-
-\end_inset
-
- gera as funções 
+No script 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+ 
+\emph on
+splines.mac
+\emph default
+ são geradas as funções interpoladoras 
 \begin_inset Formula $S_{x}(t)$
 \end_inset
 
@@ -1035,104 +826,50 @@ reference "AlgoritmoInterpol"
 \begin_inset Formula $interpol$
 \end_inset
 
- do ambiente Maxima.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize\ttfamily},language=R,numbers=left,numberstyle={\footnotesize},showstringspaces=false,tabsize=2"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-load(interpol)$
-\end_layout
-
-\begin_layout Plain Layout
-
-samples: read_matrix("output.txt")$
-\end_layout
-
-\begin_layout Plain Layout
-
-x: submatrix(samples, 3)$
-\end_layout
-
-\begin_layout Plain Layout
-
-y: submatrix(samples, 2)$
-\end_layout
-
-\begin_layout Plain Layout
-
-cspline(x)$
-\end_layout
-
-\begin_layout Plain Layout
-
-Sx(x) := ''%$
-\end_layout
-
-\begin_layout Plain Layout
-
-cspline(y)$
-\end_layout
-
-\begin_layout Plain Layout
-
-Sy(x) := ''%$
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Geração das Funções Interpoladoras 
-\begin_inset Formula $S_{x}(t)$
-\end_inset
-
- e 
-\begin_inset Formula $S_{y}(t)$
-\end_inset
-
+ do ambiente 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
 .
-\end_layout
+ Estas funções, representadas graficamente na figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraSxSy"
 
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "AlgoritmoInterpol"
-
+, são contínuas no intervalo 
+\begin_inset Formula $[1,42]$
 \end_inset
 
-
-\end_layout
-
+ (onde 
+\begin_inset Formula $42$
 \end_inset
 
+ é o número de amostras originais).
+ Assim, permitem a criação de pontos adicionais para representarmos a curva.
+ Os pontos de inflexão das funções, onde a derivada é zero, denotam as voltas
+ e revoltas que a curva original realiza, enquanto os trechos retilíneos
+ e suaves, com derivada constante, denotam as regiões mais retilíneas e
+ suaves da curva original.
+ O raciocínio de que amostrar muitos pontos nos trechos retos e suaves seria
+ redundância, é corroborado por esta análise, uma vez que a seleção de um
+ número maior de pontos entre 
+\begin_inset Formula $[20,30]$
+\end_inset
 
+, por exemplo, não iria alterar significativamente o comportamento das funçãos
+ interpoladoras nesta região, onde possuem comportamento linear ou próximo
+ do linear.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1149,8 +886,27 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
+Representação gráfica das funções interpoladoras 
+\begin_inset Formula $S_{x}(t)$
+\end_inset
 
+ e 
+\begin_inset Formula $S_{y}(t)$
+\end_inset
+
+ sendo que 
+\begin_inset Formula $t\in[1,42]$
+\end_inset
+
+.
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraSxSy"
 
 \end_inset
 
@@ -1171,118 +927,7 @@ Reconstrução da Curva
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset listings
-lstparams "basicstyle={\footnotesize\ttfamily},language=R,numbers=left,numberstyle={\footnotesize},showstringspaces=false,tabsize=2"
-inline false
-status open
-
-\begin_layout Plain Layout
-
-plot2d(
-\end_layout
-
-\begin_layout Plain Layout
-
-	[
-\end_layout
-
-\begin_layout Plain Layout
-
-		[parametric, Sx(t), Sy(t), [t, 1, 42]],
-\end_layout
-
-\begin_layout Plain Layout
-
-		[discrete, samples]
-\end_layout
-
-\begin_layout Plain Layout
-
-	],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[legend,
-\end_layout
-
-\begin_layout Plain Layout
-
-		"Splines",
-\end_layout
-
-\begin_layout Plain Layout
-
-		"Amostras"
-\end_layout
-
-\begin_layout Plain Layout
-
-	],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[style,
-\end_layout
-
-\begin_layout Plain Layout
-
-		[lines, 2, 1],
-\end_layout
-
-\begin_layout Plain Layout
-
-		[points, 2, 1, 1]
-\end_layout
-
-\begin_layout Plain Layout
-
-	],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[nticks, 42 * 4],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[gnuplot_term, "svg size 640,480"],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[gnuplot_out_file, "graph_both.svg"],
-\end_layout
-
-\begin_layout Plain Layout
-
-	[gnuplot_preamble, "set key bottom"]
-\end_layout
-
-\begin_layout Plain Layout
-
-);
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Geração das Funções Interpoladoras 
+De posse das funções interpoladoras 
 \begin_inset Formula $S_{x}(t)$
 \end_inset
 
@@ -1290,24 +935,40 @@ Geração das Funções Interpoladoras
 \begin_inset Formula $S_{y}(t)$
 \end_inset
 
+ e sabendo que as mesmas representam a curva de forma paramétrica, o script
+ script 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+ 
+\emph on
+splines.mac
+\emph default
+ utiliza recurso do ambiente para desenhar um gráfico paramétrico, ilustrado
+ na figura
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraResultados"
+
+\end_inset
+
 .
-\end_layout
-
+ Uma propriedade da interpolação spline muito relevante neste momento é
+ 
+\begin_inset Formula $S(x_{j})=f(x_{j})$
 \end_inset
 
-
-\begin_inset CommandInset label
-LatexCommand label
-name "AlgoritmoPlot"
-
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n$
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
+.
+ Isto significa dizer que a função interpoladora possui o mesmo valor que
+ a função original quando o argumento é um dos pontos da amostragem original.
+ Em outras palavras, isso significa que a curva interpolada passará por
+ todos os pontos originais, fato observado no resultado.
 \end_layout
 
 \begin_layout Standard
@@ -1315,7 +976,7 @@ name "AlgoritmoPlot"
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1332,10 +993,12 @@ status open
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Resultado da inteporlação 
+Resultado da interpolação 
 \emph on
+\lang english
 spline
 \emph default
+\lang brazilian
  natural sobreposto à amostragem original.
 \end_layout
 
@@ -1344,7 +1007,7 @@ spline
 
 \begin_inset CommandInset label
 LatexCommand label
-name "FiguraResultados-1"
+name "FiguraResultados"
 
 \end_inset
 
@@ -1389,6 +1052,8 @@ key "Burden2008"
 
 \end_inset
 
+
+\lang english
 BURDEN; R.
  L.; FAIRES, J.
  D.
@@ -1405,7 +1070,19 @@ key "Wiki2010"
 
 \end_inset
 
-http://pt.wikipedia.org/wiki/Interpola%C3%A7%C3%A3o
+
+\begin_inset CommandInset href
+LatexCommand href
+name "http://pt.wikipedia.org/wiki/Interpola%C3%A7%C3%A3o"
+target "http://pt.wikipedia.org/wiki/Interpola%C3%A7%C3%A3o"
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1421,27 +1098,71 @@ name "sec:Listagem-de-Artefatos"
 \end_layout
 
 \begin_layout Description
-Gimp Software de edição de imagens.
+
+\emph on
+\lang english
+Gimp
+\emph default
+\lang brazilian
+ Software de edição de imagens.
  Utilizado para selecionar e extrair um conjunto de pontos (amostras) da
  figura original.
 \end_layout
 
 \begin_layout Description
-parse_svg.py Script na linguagem Python.
- Utilizado para extração dos dados no formato gerado pelo Gimp para formato
- texto, mais fácil de manipular utilizando linguagens de programação.
+
+\emph on
+parse_svg.py
+\emph default
+ Script na linguagem 
+\emph on
+\lang english
+Python
+\emph default
+\lang brazilian
+.
+ Utilizado para extração dos dados do formato gerado pelo 
+\emph on
+\lang english
+Gimp
+\emph default
+\lang brazilian
+ para formato texto, mais fácil de manipular utilizando linguagens de programaçã
+o.
 \end_layout
 
 \begin_layout Description
-Maxima Ambiente matemático computacional, escrito em linguagem Lisp.
- Utilizado leitura dos dados de entrada, cálculo das funções interpoladoras
+
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+ Ambiente matemático computacional, escrito em linguagem 
+\emph on
+\lang english
+Lisp
+\emph default
+\lang brazilian
+.
+ Utilizado para leitura dos dados de entrada, cálculo das funções interpoladoras
  e geração dos gráficos.
 \end_layout
 
 \begin_layout Description
-splines.mac Script na linguagem Maxima.
- Arquivo de script utilizando para armazenar a sequência de comandos necessários
- para a realização do projeto.
+
+\emph on
+splines.mac
+\emph default
+ Script na linguagem 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+.
+ Utilizado para armazenar a sequência de comandos necessários para a realização
+ do projeto.
 \end_layout
 
 \begin_layout Section
@@ -1836,9 +1557,18 @@ name "sec:Listagem-splines.mac"
 
 \begin_layout Standard
 \begin_inset listings
-lstparams "basicstyle={\small\ttfamily},language=Matlab,numbers=left,numberstyle={\small},showstringspaces=false,tabsize=2"
+lstparams "basicstyle={\small\ttfamily},language=Lisp,numbers=left,numberstyle={\small},showstringspaces=false,tabsize=2"
 inline false
 status open
+
+\begin_layout Plain Layout
+
+/* Author: Guilherme Taschetto (gtaschetto@gmail.com)  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -1847,21 +1577,27 @@ load(interpol)$
 
 \begin_layout Plain Layout
 
-samples : read_matrix("output.txt")$
 \end_layout
 
 \begin_layout Plain Layout
 
+input_data: read_matrix("output.txt")$
 \end_layout
 
 \begin_layout Plain Layout
 
-x: submatrix(samples, 3)$
+samples: makelist([second(input_data[i]), third(input_data[i])], i, 1, length(in
+put_data))$
 \end_layout
 
 \begin_layout Plain Layout
 
-y: submatrix(samples, 2)$
+x: submatrix(input_data, 3)$
+\end_layout
+
+\begin_layout Plain Layout
+
+y: submatrix(input_data, 2)$
 \end_layout
 
 \begin_layout Plain Layout
@@ -1894,7 +1630,51 @@ Sy(x) := ''%$
 
 \begin_layout Plain Layout
 
-samples : makelist([second(samples[i]),third(samples[i])], i, 1, length(samples)
+plot2d(
+\end_layout
+
+\begin_layout Plain Layout
+
+	[discrete, samples],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[style, [points, 1, 2, 1]],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[legend, "Amostras"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[xlabel, ""],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[ylabel, ""],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_term, "svg size 520,310"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_out_file, "graph_samples.svg"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_preamble, "set key bottom"]
+\end_layout
+
+\begin_layout Plain Layout
+
 )$
 \end_layout
 
@@ -1909,27 +1689,77 @@ plot2d(
 
 \begin_layout Plain Layout
 
-	[discrete, samples],
+	[Sx(t), Sy(t)],
 \end_layout
 
 \begin_layout Plain Layout
 
-	[style, [points, 2, 1, 1]],
+	[t, 1, 42],
 \end_layout
 
 \begin_layout Plain Layout
 
-	[legend, "Amostras"],
+	[xlabel, "t"],
 \end_layout
 
 \begin_layout Plain Layout
 
-	[gnuplot_term, "svg size 640,480"],
+	[ylabel, ""],
 \end_layout
 
 \begin_layout Plain Layout
 
-	[gnuplot_out_file, "graph_samples.svg"]
+	[legend,
+\end_layout
+
+\begin_layout Plain Layout
+
+		"Sx(t)",
+\end_layout
+
+\begin_layout Plain Layout
+
+		"Sy(t)"
+\end_layout
+
+\begin_layout Plain Layout
+
+	],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[style,
+\end_layout
+
+\begin_layout Plain Layout
+
+		[lines, 2, 2],
+\end_layout
+
+\begin_layout Plain Layout
+
+		[lines, 2, 1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_term, "svg size 520,310"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_out_file, "graph_sx.svg"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_preamble, "set key bottom"]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1998,7 +1828,7 @@ plot2d(
 
 \begin_layout Plain Layout
 
-		[points, 2, 1, 1]
+		[points, 1, 2, 1]
 \end_layout
 
 \begin_layout Plain Layout
@@ -2013,7 +1843,7 @@ plot2d(
 
 \begin_layout Plain Layout
 
-	[gnuplot_term, "svg size 640,480"],
+	[gnuplot_term, "svg size 520,310"],
 \end_layout
 
 \begin_layout Plain Layout
@@ -2028,7 +1858,7 @@ plot2d(
 
 \begin_layout Plain Layout
 
-);
+)$
 \end_layout
 
 \end_inset
