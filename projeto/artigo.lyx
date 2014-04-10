@@ -77,11 +77,15 @@ Guilherme Taschetto
 \begin_inset Newline newline
 \end_inset
 
+Cristiano Guilloux
+\begin_inset Newline newline
+\end_inset
+
 Ludgero Gil Mascarenhas
 \begin_inset Newline newline
 \end_inset
 
-Cristiano Guilloux
+(Grupo 6)
 \end_layout
 
 \begin_layout Abstract
@@ -89,14 +93,18 @@ Interpolação é o método que permite construir um novo conjunto de dados
  a partir de um conjunto discreto de dados pontuais previamente conhecidos.
  Entre os diferentes métodos disponíveis, a interpolação 
 \emph on
+\lang english
 splines
 \emph default
+\lang brazilian
  possui relevância pois é capaz de fornecer um grau de erro inferior à outros
  métodos polinomiais.
  Neste artigo é realizado um estudo sobre interpolação 
 \emph on
+\lang english
 splines
 \emph default
+\lang brazilian
  através de sua aplicação no ambiente matemático 
 \emph on
 \lang latin
@@ -232,16 +240,20 @@ Existem diferentes métodos numéricos de interpolação e suas as aplicações
  economia, computação e engenharia.
  Entre estes métodos, a interpolação 
 \emph on
+\lang english
 splines
 \emph default
+\lang brazilian
  possui relevância pois é capaz de fornecer um grau de erro inferior à outros
  métodos polinomiais mais triviais, e.
  g.
  interpolação de Lagrange e interpolação de Newton.
  Neste artigo é realizado um estudo sobre interpolação 
 \emph on
+\lang english
 splines
 \emph default
+\lang brazilian
  através de sua aplicação no ambiente matemático 
 \emph on
 \lang latin
@@ -254,8 +266,10 @@ Maxima
 \begin_layout Section
 
 \emph on
+\lang english
 Splines
 \emph default
+\lang brazilian
  Cúbicos
 \end_layout
 
@@ -431,9 +445,10 @@ spline
 
 \begin_layout Standard
 \begin_inset Float algorithm
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
@@ -785,7 +800,10 @@ Seleção do Símbolo e Amostragem
 \begin_layout Standard
 Selecionou-se o símbolo alfabético X maiúsculo da fonte 
 \emph on
-Invitation Script
+\lang english
+Invitation
+\lang brazilian
+ Script
 \emph default
 , ilustrado na figura 
 \begin_inset CommandInset ref
@@ -882,8 +900,10 @@ Path
 \lang brazilian
  e salvo em um arquivo 
 \emph on
+\lang english
 SVG
 \emph default
+\lang brazilian
  encapsulado em um arquivo 
 \emph on
 PNG
@@ -914,7 +934,10 @@ status collapsed
 \begin_layout Plain Layout
 Letra X maiúscula (
 \emph on
-Invitation Script
+\lang english
+Invitation
+\lang brazilian
+ Script
 \emph default
 )
 \emph on
@@ -1026,7 +1049,10 @@ Maxima
 \lang brazilian
  
 \emph on
-splines.mac
+\lang english
+splines
+\lang brazilian
+.mac
 \emph default
  (apêndice 
 \begin_inset CommandInset ref
@@ -1102,7 +1128,10 @@ Maxima
 \lang brazilian
  
 \emph on
-splines.mac
+\lang english
+splines
+\lang brazilian
+.mac
 \emph default
  são geradas as funções interpoladoras 
 \begin_inset Formula $S_{x}(t)$
@@ -1154,13 +1183,14 @@ reference "FiguraSxSy"
 \begin_inset Formula $[20,30]$
 \end_inset
 
-, por exemplo, não iria alterar significativamente o comportamento das funçãos
+, por exemplo, não iria alterar significativamente o comportamento das funções
  interpoladoras nesta região, onde possuem comportamento linear ou próximo
  do linear.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
+placement H
 wide false
 sideways false
 status collapsed
@@ -1238,7 +1268,10 @@ Maxima
 \lang brazilian
  
 \emph on
-splines.mac
+\lang english
+splines
+\lang brazilian
+.mac
 \emph default
  utiliza recurso do ambiente para desenhar um gráfico paramétrico, ilustrado
  na figura 
@@ -1249,8 +1282,11 @@ reference "FiguraResultados"
 \end_inset
 
 .
- Uma propriedade da interpolação spline muito relevante neste momento é
- 
+ Uma propriedade da interpolação 
+\lang english
+spline
+\lang brazilian
+ muito relevante neste momento é 
 \begin_inset Formula $S(x_{j})=f(x_{j})$
 \end_inset
 
@@ -1318,12 +1354,15 @@ Conclusões
 \end_layout
 
 \begin_layout Standard
-Ao estudar e experimentar métodos númericos de interpolação fica clara a
+Ao estudar e experimentar métodos numéricos de interpolação fica clara a
  importância destas ferramentas na vida cotidiana, seja ela pessoal, profissiona
 l ou científica.
  A interpolação 
 \emph on
-spline 
+\lang english
+spline
+\lang brazilian
+ 
 \emph default
 é um destes métodos, podendo ser aplicado para solucionar uma imensa gama
  de problemas, dentre eles o apresentado neste artigo - reconstituição de
@@ -1462,7 +1501,10 @@ Lisp
 \begin_layout Description
 
 \emph on
-splines.mac
+\lang english
+splines
+\lang brazilian
+.mac
 \emph default
  Script na linguagem 
 \emph on
@@ -1855,7 +1897,10 @@ n".format(OUTPUT_fname))
 \begin_layout Section
 Listagem 
 \emph on
-splines.mac
+\lang english
+splines
+\lang brazilian
+.mac
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Listagem-splines.mac"
