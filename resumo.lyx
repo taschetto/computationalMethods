@@ -123,12 +123,12 @@ Efficient GPU-based texture interpolation using uniform B-splines
 \end_layout
 
 \begin_layout Enumerate
-Avaliação de interpoladores estáticos e determinísticos na estimativa de
- atributos do solo em agricultura de precisão
+Compressão por interpolação e wavelets
 \end_layout
 
 \begin_layout Enumerate
-Compressão por interpolação e wavelets
+Avaliação de interpoladores estáticos e determinísticos na estimativa de
+ atributos do solo em agricultura de precisão
 \end_layout
 
 \begin_layout Section
@@ -136,12 +136,12 @@ Efficient GPU-based texture interpolation using uniform B-splines
 \end_layout
 
 \begin_layout Section
-Avaliação de interpoladores estáticos e determinísticos na estimativa de
- atributos do solo em agricultura de precisão
+Compressão por interpolação e wavelets
 \end_layout
 
 \begin_layout Section
-Compressão por interpolação e wavelets
+Avaliação de interpoladores estáticos e determinísticos na estimativa de
+ atributos do solo em agricultura de precisão
 \end_layout
 
 \end_body
