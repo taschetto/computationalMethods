@@ -66,7 +66,7 @@
 \begin_body
 
 \begin_layout Title
-Relatório Técnico --- Outros Tipos de Interpolação
+Outros Tipos de Interpolação
 \end_layout
 
 \begin_layout Author
@@ -94,7 +94,7 @@ Na disciplina de Métodos Numéricos foram estudados os métodos numéricos
  através do resumo de três artigos científicos distintos.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Introdução
 \end_layout
 
@@ -113,47 +113,66 @@ FACIN --- PUCRS --- 2014/1.
  e Splines.
  Porém, existem diversos métodos, aspectos e aplicações que não são abordados
  no conteúdo de aula.
- Este relatório técnico tem por objetivo ilustrar alguns destes aspectos
- através do resumo de três artigos científicos distintos.
- São eles:
+ Este artigo tem por objetivo ilustrar alguns destes aspectos através do
+ resumo de três artigos científicos distintos a fim de obter-se uma visão
+ mais ampla do panorama de métodos numéricos de interpolação existentes.
+\end_layout
+
+\begin_layout Section
+Descrição dos resultados da pesquisa
+\end_layout
+
+\begin_layout Standard
+Os artigos estudados foram os seguintes:
 \end_layout
 
 \begin_layout Enumerate
-Efficient GPU-based texture interpolation using uniform B-splines
+Efficient GPU-based texture interpolation using uniform B-splines (por Guilherme
+ Taschetto)
 \end_layout
 
 \begin_layout Enumerate
-Compressão por interpolação e wavelets
+Compressão por interpolação e wavelets (por Cristiano Guilloux)
 \end_layout
 
 \begin_layout Enumerate
 Avaliação de interpoladores estáticos e determinísticos na estimativa de
- atributos do solo em agricultura de precisão
+ atributos do solo em agricultura de precisão (por Ludgero Mascarenhas)
+\end_layout
+
+\begin_layout Subsection
+Descrição dos métodos numéricos de interpolação apresentados nos artigos
+\end_layout
+
+\begin_layout Subsection
+Descrição das aplicações dos métodos numéricos de interpolação apresentadas
+ nos artigos
 \end_layout
 
 \begin_layout Section
-Efficient GPU-based texture interpolation using uniform B-splines
+Conclusões
 \end_layout
 
-\begin_layout Standard
-Resumo por Guilherme Taschetto.
+\begin_layout Subsection
+Análise dos objetivos apresentados na introdução
 \end_layout
 
-\begin_layout Section
-Compressão por interpolação e wavelets
+\begin_layout Subsection
+Síıntese do trabalho atraves da apresentação dos resultados mais importantes
 \end_layout
 
-\begin_layout Standard
-Resumo por Cristiano Guilloux.
+\begin_layout Subsection
+Conclusão geral do trabalho
 \end_layout
 
-\begin_layout Section
-Avaliação de interpoladores estáticos e determinísticos na estimativa de
- atributos do solo em agricultura de precisão
-\end_layout
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
 
-\begin_layout Standard
-Resumo por Ludgero Mascarenhas.
+\end_inset
+
+qwerty
 \end_layout
 
 \end_body
