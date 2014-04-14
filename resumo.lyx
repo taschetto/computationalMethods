@@ -135,13 +135,25 @@ Avaliação de interpoladores estáticos e determinísticos na estimativa de
 Efficient GPU-based texture interpolation using uniform B-splines
 \end_layout
 
+\begin_layout Standard
+Resumo por Guilherme Taschetto.
+\end_layout
+
 \begin_layout Section
 Compressão por interpolação e wavelets
+\end_layout
+
+\begin_layout Standard
+Resumo por Cristiano Guilloux.
 \end_layout
 
 \begin_layout Section
 Avaliação de interpoladores estáticos e determinísticos na estimativa de
  atributos do solo em agricultura de precisão
+\end_layout
+
+\begin_layout Standard
+Resumo por Ludgero Mascarenhas.
 \end_layout
 
 \end_body
