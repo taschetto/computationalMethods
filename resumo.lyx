@@ -66,7 +66,7 @@
 \begin_body
 
 \begin_layout Title
-Outros Tipos de Interpolação
+Métodos Numéricos de Interpolação --- Indo Além
 \end_layout
 
 \begin_layout Author
@@ -91,7 +91,7 @@ Na disciplina de Métodos Numéricos foram estudados os métodos numéricos
  Porém, existem diversos métodos, aspectos e aplicações que não são abordados
  no conteúdo de aula.
  Este relatório técnico tem por objetivo ilustrar alguns destes aspectos
- através do resumo de três artigos científicos distintos.
+ através de pesquisa em três artigos científicos distintos.
 \end_layout
 
 \begin_layout Section
@@ -113,8 +113,8 @@ FACIN --- PUCRS --- 2014/1.
  e Splines.
  Porém, existem diversos métodos, aspectos e aplicações que não são abordados
  no conteúdo de aula.
- Este artigo tem por objetivo ilustrar alguns destes aspectos através do
- resumo de três artigos científicos distintos a fim de obter-se uma visão
+ Este artigo tem por objetivo ilustrar alguns destes aspectos através de
+ pesquisa em três artigos científicos distintos a fim de obter-se uma visão
  mais ampla do panorama de métodos numéricos de interpolação existentes.
 \end_layout
 
@@ -122,57 +122,387 @@ FACIN --- PUCRS --- 2014/1.
 Descrição dos resultados da pesquisa
 \end_layout
 
+\begin_layout Subsection
+
+\lang english
+Efficient GPU-Based texture interpolation using uniform B-splines
+\lang brazilian
+ (por Guilherme Taschetto)
+\end_layout
+
 \begin_layout Standard
-Os artigos estudados foram os seguintes:
+De acordo com 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WikiBspline"
+
+\end_inset
+
+, uma 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+, ou 
+\emph on
+\lang english
+Basis
+\lang brazilian
+ 
+\lang english
+spline
+\emph default
+\lang brazilian
+, é uma função 
+\emph on
+\lang english
+spline
+\lang brazilian
+ 
+\emph default
+que tem suporte
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+O suporte de uma função é o subconjunto do domínio (conjunto de pontos)
+ onde a função não é nula.
+ Ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WikiSupport"
+
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Enumerate
-Efficient GPU-based texture interpolation using uniform B-splines (por Guilherme
- Taschetto)
+\end_inset
+
+ mínimo a um determinado grau, suavidade e domínio.
+ 
+\emph on
+Splines 
+\emph default
+podem ser representadas como combinações lineares de 
+\lang english
+B-
+\emph on
+splines
+\emph default
+\lang brazilian
+ com um conjunto de pontos de controle equidistantes entre si, ou seja:
+ 
+\begin_inset Formula 
+\[
+S_{k,t}(x)=\sum_{i}\alpha_{i}B_{i,k,t}(x)
+\]
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Enumerate
-Compressão por interpolação e wavelets (por Cristiano Guilloux)
+\begin_layout Standard
+Muitos processamentos (e.
+ g., 
+\emph on
+\lang english
+resampling
+\emph default
+\lang brazilian
+) e visualizações (e.
+ g., renderização de volumes) de imagens tiram proveito da qualidade superior
+ de interpolação utilizando 
+\lang english
+B-
+\emph on
+\lang brazilian
+splines
+\emph default
+ em relação a métodos lineares de interpolação conforme ilustra a figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraLinearCubic"
+
+\end_inset
+
+.
+ Além disso, há um crescente interesse em utilizar 
+\emph on
+\lang canadian
+GPU
+\emph default
+s
+\lang brazilian
+ no processamento de sinais e imagens, dado o alto grau de paralelismo de
+ dados existente nestas aplicações.
+ Assim, torna-se evidente a relevância de uma forma fácil e rápida para
+ realizar interpolações cúbicas na 
+\emph on
+\lang canadian
+GPU
+\emph default
+\lang brazilian
+, deixando o 
+\emph on
+\lang english
+CPU
+\emph default
+\lang brazilian
+ livre para outros processamentos.
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
+\begin_inset Float figure
+placement th
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/linearcubi.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Comparação entre interpolação linear e cúbica.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraLinearCubic"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Compressão por interpolação e 
+\emph on
+\lang english
+wavelets
+\emph default
+\lang brazilian
+ (por Cristiano Guilloux)
+\end_layout
+
+\begin_layout Standard
+Descrição dos métodos numéricos de interpolação apresentados nos artigos
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+Descrição das aplicações dos métodos numéricos de interpolação apresentadas
+ nos artigos
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Subsection
 Avaliação de interpoladores estáticos e determinísticos na estimativa de
  atributos do solo em agricultura de precisão (por Ludgero Mascarenhas)
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 Descrição dos métodos numéricos de interpolação apresentados nos artigos
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
 Descrição das aplicações dos métodos numéricos de interpolação apresentadas
  nos artigos
+\end_layout
+
+\begin_layout Standard
+...
 \end_layout
 
 \begin_layout Section
 Conclusões
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
 Análise dos objetivos apresentados na introdução
 \end_layout
 
-\begin_layout Subsection
-Síıntese do trabalho atraves da apresentação dos resultados mais importantes
+\begin_layout Standard
+...
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+Síıntese do trabalho através da apresentação dos resultados mais importantes
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
 Conclusão geral do trabalho
+\end_layout
+
+\begin_layout Standard
+...
 \end_layout
 
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "key-1"
+key "Article1"
 
 \end_inset
 
-qwerty
+RUIJTERS, D.; ROMENY, B.
+ M.
+ T.
+ H.; SUETENS, D.
+ 
+\lang english
+Efficient GPU-Based Texture Interpolation using Uniform B-Splines
+\lang brazilian
+.
+ 
+\series bold
+\lang english
+Journal of Graphics Tools
+\series default
+\lang brazilian
+, Londres, v.
+ 13, n.
+ 4, p.
+ 61-69, 9 fev.
+ 2009.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Article2"
+
+\end_inset
+
+AGULHARI, C.
+ M.; BONATTI, I.
+ S.
+ Compressão por interpolação e 
+\emph on
+\lang english
+wavelets
+\emph default
+\lang brazilian
+.
+ 
+\series bold
+FEEC/UNICAMP
+\series default
+, Campinas, 7 f., 12 fev.
+ 2007.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Article3"
+
+\end_inset
+
+SILVA, S.
+ A.; LIMA, J.
+ S.
+ de S.; SOUZA, G.
+ S.
+ de; OLIVEIRA, R.
+ B.
+ Avaliação de interpoladores estáticos e determinísticos na estimativa de
+ atributos do solo em agricultura de precisão.
+ 
+\series bold
+IDESIA
+\series default
+, Chile, v.26, n.
+ 2, p.
+ 75-81, ago.
+ 2008.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "WikiBspline"
+
+\end_inset
+
+
+\lang english
+B-spline
+\lang brazilian
+ - 
+\lang english
+Wikipedia, the free encyclopedia
+\lang brazilian
+.
+ Disponível em: <
+\begin_inset CommandInset href
+LatexCommand href
+target "http://en.wikipedia.org/wiki/B-spline"
+
+\end_inset
+
+>.
+ Acesso em 16/04/2014.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "WikiSupport"
+
+\end_inset
+
+
+\lang english
+Support (mathematics) - Wikipedia, the free encyclopedia
+\lang brazilian
+.
+ Disponível em: <
+\begin_inset CommandInset href
+LatexCommand href
+target "http://en.wikipedia.org/wiki/Support_(mathematics)"
+
+\end_inset
+
+>.
+ Acesso em 16/04/2014.
 \end_layout
 
 \end_body
