@@ -319,6 +319,46 @@ name "FiguraLinearCubic"
 \end_layout
 
 \begin_layout Standard
+A interpolação 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ na posição 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ é igual ao somatório da 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ 
+\begin_inset Formula $\beta_{n}$
+\end_inset
+
+ ponderado pelos coeficientes 
+\begin_inset Formula $c(k)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+s_{n}(x)=\sum_{k\in\mathbb{\mathbb{Z}}}c(k)\beta_{n}(x-k)\label{eq:1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 A 
 \lang english
 B-
@@ -326,7 +366,7 @@ B-
 spline
 \emph default
 \lang brazilian
- de grau zero, também chamada de função box, é a base
+ de grau zero, também chamada de função box, serve de base
 \begin_inset Foot
 status collapsed
 
@@ -413,46 +453,6 @@ spline
 \end_layout
 
 \begin_layout Standard
-A interpolação 
-\emph on
-\lang english
-spline
-\emph default
-\lang brazilian
- na posição 
-\begin_inset Formula $x\in\mathbb{R}$
-\end_inset
-
- é igual ao somatório da 
-\lang english
-B-
-\emph on
-spline
-\emph default
-\lang brazilian
- 
-\begin_inset Formula $\beta_{n}$
-\end_inset
-
- ponderado pelos coeficientes 
-\begin_inset Formula $c(k)$
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-s_{n}(x)=\sum_{k\in\mathbb{\mathbb{Z}}}c(k)\beta_{n}(x-k)\label{eq:1}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 O caso especial da 
 \lang english
 B-
@@ -490,7 +490,7 @@ s_{3}(i+\alpha)=w_{0}(\alpha)\cdot c(i-1)+w_{1}(\alpha)\cdot c(i)+w_{2}(\alpha)\
 \end_layout
 
 \begin_layout Standard
-onde 
+Onde 
 \begin_inset Formula $i$
 \end_inset
 
@@ -505,7 +505,7 @@ B-
 spline
 \emph default
 \lang brazilian
- cúbica e da parte fracional 
+ cúbica e da parte fracionária 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -680,7 +680,7 @@ Quantidade de dimensões, e.
 \begin_inset Formula $n=1$
 \end_inset
 
-) como:
+):
 \end_layout
 
 \begin_layout Standard
@@ -696,7 +696,7 @@ s_{1}(i+\alpha)=(1-\alpha)\cdot s_{0}(i)+\alpha\cdot s_{0}(i+1)
 
 \begin_layout Standard
 Pode-se reescrever a equação ao adicionar duas amostras vizinhas ponderadas,
- representando, assim, uma interpolação linear ponderada:
+ resultando em uma interpolação linear ponderada:
 \end_layout
 
 \begin_layout Standard
@@ -790,7 +790,14 @@ reference "eq:5"
 \begin_inset Formula $w$
 \end_inset
 
- da B-spline, obtidos em 
+ da 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+, obtidos em 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:3"
@@ -806,13 +813,26 @@ reference "eq:3"
 \begin_inset Formula $w_{0}$
 \end_inset
 
- estar sempre localizado no primeiro quadrante da B-spline cúbica, 
+ estar sempre localizado no primeiro quadrante da 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ cúbica, 
 \begin_inset Formula $w_{1}$
 \end_inset
 
  sempre no segundo, etc.
- Uma vez que a B-spline cúbica é formada por somente uma equação por quadrante
- (figura 
+ Uma vez que a 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ cúbica é formada por somente uma equação por quadrante (figura 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "FiguraCoef"
@@ -996,10 +1016,6 @@ name "TabelaResultados"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1008,16 +1024,21 @@ name "TabelaResultados"
 \begin_layout Standard
 Alguns problemas de precisão são associados à execução em hardware da interpolaç
 ão linear.
- Muitos poderiam imaginar que os coeficientes são convertidos em ponto-flutuante
-, ponderados e depois somados.
+ Poder-se-ia imaginar que os coeficientes, antes de serem somados e ponderados,
+ são formatados em ponto flutuante.
  Entretanto, este não é o caso.
- O processador de texturas da placa gráfica primeiro pondera e soma, e somente
- depois o valor é convertido para ponto-flutuante, limitando a precisão
- da interpolação.
+ O processador da 
+\emph on
+\lang english
+GPU
+\emph default
+\lang brazilian
+ primeiro pondera, soma e somente depois formata o valor como ponto flutuante,
+ limitando a precisão da interpolação e inserindo erros.
  Consequentemente, só é possivel obter maior acurácia utilizando palavras
  de dados maiores ao custo de maior consumo de memória.
- Outro problema de precisão da interpolação linear é causado pelo fato de
- o hardware utilizado limitar as coordenadas ao formato de ponto-fixo.
+ Além disto, o hardware utilizado limita as coordenadas de entrada ao formato
+ de ponto fixo.
  Estas questões originam o erro exibido na tabela 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -1029,8 +1050,13 @@ reference "TabelaResultados"
 \end_layout
 
 \begin_layout Standard
-A implementação do método, executada em uma NVIDIA GeForce 9800 GTX, computou
- 
+A implementação do método, executada em uma 
+\emph on
+\lang english
+GPU
+\emph default
+\lang brazilian
+ NVIDIA GeForce 9800 GTX, computou 
 \begin_inset Formula $356\cdot10^{6}$
 \end_inset
 
@@ -1040,12 +1066,13 @@ A implementação do método, executada em uma NVIDIA GeForce 9800 GTX, computou
 \begin_inset Formula $93.6\cdot10^{6}$
 \end_inset
 
- interpolações linerares por segundo e uma implementação utilizando interpolação
+ interpolações cúbicas por segundo e uma implementação utilizando interpolação
  trilinear simples computou 
 \begin_inset Formula $486\cdot10^{6}$
 \end_inset
 
- interpolações por segundo.
+ interpolações lineares por segundo, porém com resultado de qualidade bastante
+ inferior.
 \end_layout
 
 \begin_layout Subsection
@@ -1059,20 +1086,8 @@ wavelets
 \end_layout
 
 \begin_layout Standard
-Descrição dos métodos numéricos de interpolação apresentados nos artigos
-\end_layout
+\SpecialChar \ldots{}
 
-\begin_layout Standard
-...
-\end_layout
-
-\begin_layout Standard
-Descrição das aplicações dos métodos numéricos de interpolação apresentadas
- nos artigos
-\end_layout
-
-\begin_layout Standard
-...
 \end_layout
 
 \begin_layout Subsection
@@ -1081,20 +1096,8 @@ Avaliação de interpoladores estáticos e determinísticos na estimativa de
 \end_layout
 
 \begin_layout Standard
-Descrição dos métodos numéricos de interpolação apresentados nos artigos
-\end_layout
+\SpecialChar \ldots{}
 
-\begin_layout Standard
-...
-\end_layout
-
-\begin_layout Standard
-Descrição das aplicações dos métodos numéricos de interpolação apresentadas
- nos artigos
-\end_layout
-
-\begin_layout Standard
-...
 \end_layout
 
 \begin_layout Section
@@ -1102,27 +1105,34 @@ Conclusões
 \end_layout
 
 \begin_layout Standard
-Análise dos objetivos apresentados na introdução
+Os diversos métodos numéricos de interpolação existentes fornecem uma extensa
+ gama de possibilidades para resolver os mais variados problemas.
+ Entretanto, também é necessário conhecer e avaliar aplicação e seus requisitos
+ a fim de escolher o método mais apropriado.
+ Tais requisitos podem ser, por exemplo:
+\end_layout
+
+\begin_layout Itemize
+Tempo de execução;
+\end_layout
+
+\begin_layout Itemize
+Qualidade do resultado (precisão, erro, etc);
+\end_layout
+
+\begin_layout Itemize
+Formato da resposta (gráfico de função, valoração de ponto, etc);
+\end_layout
+
+\begin_layout Itemize
+Etc.
 \end_layout
 
 \begin_layout Standard
-...
-\end_layout
-
-\begin_layout Standard
-Síıntese do trabalho através da apresentação dos resultados mais importantes
-\end_layout
-
-\begin_layout Standard
-...
-\end_layout
-
-\begin_layout Standard
-Conclusão geral do trabalho
-\end_layout
-
-\begin_layout Standard
-...
+A possibilidade de visualizar os diferentes métodos de interpolação, incluindo
+ os estudados em aula e os estudados neste artigo, e a forma com que são
+ aplicados enriquece e contribui para a formação acadêmica e profissional
+ do cientista da computação.
 \end_layout
 
 \begin_layout Bibliography
