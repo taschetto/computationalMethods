@@ -87,7 +87,13 @@ Ludgero Gil Mascarenhas
 
 \begin_layout Abstract
 Na disciplina de Métodos Numéricos foram estudados os métodos numéricos
- de interpolação de Lagrange, Newton e Splines.
+ de interpolação de Lagrange, Newton e 
+\emph on
+\lang english
+Splines
+\emph default
+\lang brazilian
+.
  Porém, existem diversos métodos, aspectos e aplicações que não são abordados
  no conteúdo de aula.
  Este relatório técnico tem por objetivo ilustrar alguns destes aspectos
@@ -110,7 +116,13 @@ FACIN --- PUCRS --- 2014/1.
 \end_inset
 
  foram estudados os métodos numéricos de interpolação de Lagrange, Newton
- e Splines.
+ e 
+\emph on
+\lang english
+Splines
+\emph default
+\lang brazilian
+.
  Porém, existem diversos métodos, aspectos e aplicações que não são abordados
  no conteúdo de aula.
  Este artigo tem por objetivo ilustrar alguns destes aspectos através de
@@ -128,6 +140,17 @@ Descrição dos resultados da pesquisa
 Efficient GPU-Based texture interpolation using uniform B-splines
 \lang brazilian
  (por Guilherme Taschetto)
+\end_layout
+
+\begin_layout Subsubsection*
+
+\lang english
+B-
+\emph on
+splines
+\emph default
+\lang brazilian
+ Cúbicas
 \end_layout
 
 \begin_layout Standard
@@ -159,6 +182,35 @@ spline
 \emph on
 \lang english
 spline
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ 
+\emph on
+\lang english
+Splines
+\lang brazilian
+ 
+\emph default
+podem ser representadas como combinações lineares de 
+\lang english
+B-
+\emph on
+splines
+\emph default
+\lang brazilian
+, i.
+ e.: 
+\begin_inset Formula $S_{k,t}(x)=\sum_{i}\alpha_{i}B_{i,k,t}(x)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
 \lang brazilian
  
 \emph default
@@ -182,55 +234,29 @@ key "WikiSupport"
 \end_inset
 
  mínimo a um determinado grau, suavidade e domínio.
- 
-\emph on
-Splines 
-\emph default
-podem ser representadas como combinações lineares de 
-\lang english
-B-
-\emph on
-splines
-\emph default
-\lang brazilian
- com um conjunto de pontos de controle equidistantes entre si, ou seja:
- 
-\begin_inset Formula 
-\[
-S_{k,t}(x)=\sum_{i}\alpha_{i}B_{i,k,t}(x)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Muitos processamentos (e.
+ Muitos processamentos de imagens (e.
  g., 
 \emph on
 \lang english
 resampling
 \emph default
 \lang brazilian
-) e visualizações (e.
- g., renderização de volumes) de imagens tiram proveito da qualidade superior
- de interpolação utilizando 
+ e renderização de volumes) tiram proveito da qualidade superior utilizando
+ 
 \lang english
 B-
 \emph on
-\lang brazilian
 splines
 \emph default
- em relação a métodos lineares de interpolação conforme ilustra a figura
- 
+\lang brazilian
+ em relação a métodos lineares de interpolação (figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "FiguraLinearCubic"
 
 \end_inset
 
-.
+).
  Além disso, há um crescente interesse em utilizar 
 \emph on
 \lang canadian
@@ -247,13 +273,7 @@ s
 GPU
 \emph default
 \lang brazilian
-, deixando o 
-\emph on
-\lang english
-CPU
-\emph default
-\lang brazilian
- livre para outros processamentos.
+.
 \end_layout
 
 \begin_layout Standard
@@ -296,6 +316,736 @@ name "FiguraLinearCubic"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+A 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ de grau zero, também chamada de função box, é a base
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+É utilizada a variante da função 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ centrada na origem pois sua simetria pode ser explorada na programação
+ da 
+\emph on
+\lang english
+GPU
+\emph default
+\lang brazilian
+.
+\end_layout
+
+\end_inset
+
+ para as 
+\lang english
+B-
+\emph on
+splines
+\emph default
+\lang brazilian
+ de demais graus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\beta_{0}(x)=\begin{cases}
+1, & |x|<\frac{1}{2}\\
+\frac{1}{2}, & |x|=\frac{1}{2}\\
+0, & |x|>\frac{1}{2}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\lang english
+B-
+\emph on
+splines
+\emph default
+\lang brazilian
+ subsequentes, de grau 
+\begin_inset Formula $n$
+\end_inset
+
+, são obtidas a partir da convolução recursiva da função box com a 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ de grau 
+\begin_inset Formula $n-1$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\beta_{n}(x)=\beta_{0}(x)*\beta_{n-1}(x),\qquad n\geq1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A interpolação 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ na posição 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+ é igual ao somatório da 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ 
+\begin_inset Formula $\beta_{n}$
+\end_inset
+
+ ponderado pelos coeficientes 
+\begin_inset Formula $c(k)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+s_{n}(x)=\sum_{k\in\mathbb{\mathbb{Z}}}c(k)\beta_{n}(x-k)\label{eq:1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+O caso especial da 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ cúbica envolve a soma ponderada de quatro coeficientes adjacentes (figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraCoef"
+
+\end_inset
+
+), podendo ser obtida a partir de 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:1"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+s_{3}(i+\alpha)=w_{0}(\alpha)\cdot c(i-1)+w_{1}(\alpha)\cdot c(i)+w_{2}(\alpha)\cdot c(i+1)+w_{3}(\alpha)\cdot c(i+2)\label{eq:2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+onde 
+\begin_inset Formula $i$
+\end_inset
+
+ é a parte inteira da coordenada e os pesos 
+\begin_inset Formula $w_{n}(\alpha)$
+\end_inset
+
+ são calculados a partir da função 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ cúbica e da parte fracional 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ da coordenada, a saber:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccl}
+w_{0}(\alpha) & = & \beta_{3}(-1-\alpha)\\
+w_{1}(\alpha) & = & \beta_{3}(-\alpha)\\
+w_{2}(\alpha) & = & \beta_{3}(1-\alpha)\\
+w_{3}(\alpha) & = & \beta_{3}(2-\alpha)
+\end{array}\label{eq:3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\beta_{3}(x)=\begin{cases}
+0, & |x|\geq2\\
+\frac{1}{6}\ldotp(2-|x|)^{3}, & 1\leq|x|<2\\
+\frac{2}{3}-\frac{1}{2}|x|^{2}\ldotp(2-|x|), & |x|<1
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/bsplinecoef.PNG
+	width 50page%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Coeficientes 
+\begin_inset Formula $c(k)$
+\end_inset
+
+ para uma 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ cúbica.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraCoef"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Valoração de 
+\lang english
+B-
+\emph on
+splines
+\emph default
+\lang brazilian
+ Cúbicas utilizando
+\emph on
+ 
+\lang english
+GPU
+\end_layout
+
+\begin_layout Standard
+É possivel decompor uma interpolação cúbica em 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ interpolações lineares ponderadas
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Interpolações lineares são computadas em hardware pela placa gráfica, o
+ que lhes confere alta performance em relação à interpolação por proximidade
+ ponderada, que necessitam endereçar em memória e varrer o conjunto de pontos.
+\end_layout
+
+\end_inset
+
+ ao invés de 
+\begin_inset Formula $4^{n}$
+\end_inset
+
+ interpolações por proximidade ponderada
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Busca por proximidade é um problema de otimização onde, dado um conjunto
+ de pontos 
+\begin_inset Formula $S$
+\end_inset
+
+ em um espaço 
+\begin_inset Formula $M$
+\end_inset
+
+ e um ponto 
+\begin_inset Formula $q$
+\end_inset
+
+, encontrar o ponto em 
+\begin_inset Formula $S$
+\end_inset
+
+ mais próximo de 
+\begin_inset Formula $q$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+, onde 
+\begin_inset Formula $n$
+\end_inset
+
+ é a dimensionalidade
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Quantidade de dimensões, e.
+ g., 1D, 2D, 3D.
+\end_layout
+
+\end_inset
+
+.
+ Considerando uma interpolação linear unidimensional (1D, 
+\begin_inset Formula $n=1$
+\end_inset
+
+) como:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+s_{1}(i+\alpha)=(1-\alpha)\cdot s_{0}(i)+\alpha\cdot s_{0}(i+1)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pode-se reescrever a equação ao adicionar duas amostras vizinhas ponderadas,
+ representando, assim, uma interpolação linear ponderada:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a\cdot s_{0}(i)+b\cdot s_{0}(i+1)=(a+b)\cdot s_{1}(i+\frac{b}{a+b})\label{eq:4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Utilizando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:4"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:2"
+
+\end_inset
+
+ pode ser reescrita na forma de uma soma de interpolações lineares ponderadas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccl}
+s_{3}(i+\alpha) & = & g_{0}\cdot c_{1}(i+h_{0})+g_{1}\cdot c_{1}(i+h_{1})\\
+\\
+g_{0} & = & w_{0}+w_{1}\\
+g_{1} & = & w_{2}+w_{3}\\
+h_{0} & = & (w_{1}/g_{0})-1\\
+h_{1} & = & (w_{3}/g_{1})+2
+\end{array}\label{eq:5}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Onde 
+\begin_inset Formula $c_{1}$
+\end_inset
+
+ é uma função de interpolação linear entre os coeficientes da 
+\lang english
+B-
+\emph on
+spline
+\emph default
+\lang brazilian
+ cúbica.
+\end_layout
+
+\begin_layout Standard
+Extrapolar este esquema para o caso N-dimensional permite perceber o ganho
+ de performance, uma vez que para uma interpolação cúbica em 3D (
+\begin_inset Formula $n=3$
+\end_inset
+
+) são computadas 8 interpolações lineares ao invés de 64 interpolações por
+ proximidade ponderada.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:5"
+
+\end_inset
+
+ mostra que as variáveis 
+\begin_inset Formula $g$
+\end_inset
+
+ e 
+\begin_inset Formula $h$
+\end_inset
+
+ são funções dos pesos 
+\begin_inset Formula $w$
+\end_inset
+
+ da B-spline, obtidos em 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:3"
+
+\end_inset
+
+.
+ Determinar os pesos 
+\begin_inset Formula $w$
+\end_inset
+
+ torna-se simples devido ao fato de 
+\begin_inset Formula $w_{0}$
+\end_inset
+
+ estar sempre localizado no primeiro quadrante da B-spline cúbica, 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+ sempre no segundo, etc.
+ Uma vez que a B-spline cúbica é formada por somente uma equação por quadrante
+ (figura 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "FiguraCoef"
+
+\end_inset
+
+), as seguintes equações podem ser estabelecidas:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccl}
+w_{0}(\alpha) & = & \frac{1}{6}(1-\alpha)^{3}\\
+w_{1}(\alpha) & = & \frac{2}{3}-\frac{1}{2}\alpha^{2}\ldotp(2-\alpha)\\
+w_{2}(\alpha) & = & \frac{2}{3}-\frac{1}{2}(1-\alpha)^{2}\ldotp(1+\alpha)\\
+w_{3}(\alpha) & = & \frac{1}{6}(\alpha)^{3}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assim, as variáveis 
+\begin_inset Formula $g$
+\end_inset
+
+ e 
+\begin_inset Formula $h$
+\end_inset
+
+ podem ser calculadas 
+\emph on
+\lang english
+on-the-fly
+\emph default
+\lang brazilian
+ pela 
+\emph on
+\lang english
+GPU
+\emph default
+\lang brazilian
+ utilizando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:5"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+Resultados
+\end_layout
+
+\begin_layout Standard
+A tabela 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "TabelaResultados"
+
+\end_inset
+
+ exibe os resultados obtidos pela implementação utilizando o método proposto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Método
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erro (RMS)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tempo (ms)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+on-the-fly
+\emph default
+\lang brazilian
+ (proposto)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8.58\cdot10^{-5}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.74$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Erro e tempo de execução da interpolação cúbica.
+ Medidas obtidas em uma NVIDIA GeForce 9800 GTX.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "TabelaResultados"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Alguns problemas de precisão são associados à execução em hardware da interpolaç
+ão linear.
+ Muitos poderiam imaginar que os coeficientes são convertidos em ponto-flutuante
+, ponderados e depois somados.
+ Entretanto, este não é o caso.
+ O processador de texturas da placa gráfica primeiro pondera e soma, e somente
+ depois o valor é convertido para ponto-flutuante, limitando a precisão
+ da interpolação.
+ Consequentemente, só é possivel obter maior acurácia utilizando palavras
+ de dados maiores ao custo de maior consumo de memória.
+ Outro problema de precisão da interpolação linear é causado pelo fato de
+ o hardware utilizado limitar as coordenadas ao formato de ponto-fixo.
+ Estas questões originam o erro exibido na tabela 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "TabelaResultados"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A implementação do método, executada em uma NVIDIA GeForce 9800 GTX, computou
+ 
+\begin_inset Formula $356\cdot10^{6}$
+\end_inset
+
+ interpolações cúbicas por segundo.
+ Para fins de comparação, uma implementação utilizando 64 interpolações
+ por proximidade ponderada computou 
+\begin_inset Formula $93.6\cdot10^{6}$
+\end_inset
+
+ interpolações linerares por segundo e uma implementação utilizando interpolação
+ trilinear simples computou 
+\begin_inset Formula $486\cdot10^{6}$
+\end_inset
+
+ interpolações por segundo.
 \end_layout
 
 \begin_layout Subsection
