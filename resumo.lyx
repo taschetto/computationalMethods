@@ -142,7 +142,7 @@ Efficient GPU-Based texture interpolation using uniform B-splines
  (por Guilherme Taschetto)
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 
 \lang english
 B-
@@ -593,7 +593,7 @@ name "FiguraCoef"
 
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Valoração de 
 \lang english
 B-
@@ -609,7 +609,7 @@ GPU
 \end_layout
 
 \begin_layout Standard
-É possivel decompor uma interpolação cúbica em 
+É possível decompor uma interpolação cúbica em 
 \begin_inset Formula $2^{n}$
 \end_inset
 
@@ -889,7 +889,7 @@ reference "eq:5"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsubsection
 Resultados
 \end_layout
 
@@ -909,7 +909,7 @@ reference "TabelaResultados"
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1035,7 +1035,7 @@ GPU
 \lang brazilian
  primeiro pondera, soma e somente depois formata o valor como ponto flutuante,
  limitando a precisão da interpolação e inserindo erros.
- Consequentemente, só é possivel obter maior acurácia utilizando palavras
+ Consequentemente, só é possível obter maior acurácia utilizando palavras
  de dados maiores ao custo de maior consumo de memória.
  Além disto, o hardware utilizado limita as coordenadas de entrada ao formato
  de ponto fixo.
@@ -1085,24 +1085,60 @@ wavelets
  (por Cristiano Guilloux)
 \end_layout
 
+\begin_layout Standard
+Este artigo objetiva comparar métodos de compressão utilizando algoritmos
+ de interpolação com métodos de compressão via 
+\emph on
+\lang english
+wavelets
+\lang brazilian
+, 
+\emph default
+realizadas utilizando a ferramenta 
+\emph on
+\lang english
+Wavelet Toolbox
+\emph default
+\lang brazilian
+ do pacote computacional 
+\emph on
+\lang english
+Matlab
+\emph default
+\lang brazilian
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Oppenheim2000"
+
+\end_inset
+
+.
+ Os parâmetros de comparação são taxa de compressão e distorção do sinal.
+\end_layout
+
 \begin_layout Subsubsection
 Interpolação polinomial
 \end_layout
 
 \begin_layout Standard
-Na interpolação polinomial obtem-se um polinômio de grau 
+Na interpolação polinomial obtém-se um polinômio de grau 
 \emph on
-n, p
-\begin_inset Formula $_{n}$
+
+\begin_inset Formula $n$
 \end_inset
 
-(x), 
+, 
+\begin_inset Formula $p_{n}(x)$
+\end_inset
+
+, 
 \emph default
 que satisfaça os 
-\emph on
-(n+1) 
-\emph default
-pontos fornecidos.
+\begin_inset Formula $(n+1)$
+\end_inset
+
+ pontos fornecidos.
  Em geral escolhe-se polinômios de grau inferior ao número de amostras suprimida
 s, por ter uma obtenção de polinômio numericamente instável.
 \end_layout
@@ -1117,24 +1153,11 @@ O algoritmo de interpolação de Lagrange é dado por
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-p_{n}(x)=\sum_{k=0}^{n}y_{k}\frac{\prod_{k,n}(x)}{\prod_{k,n}(x)_{k}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-sendo
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\prod{}_{k,n}(x)=\prod_{i=0,i\neq k}^{n}(x-x_{i})
-\]
+\begin{eqnarray*}
+p_{n}(x) & = & \sum_{k=0}^{n}y_{k}\frac{\prod_{k,n}(x)}{\prod_{k,n}(x)_{k}}\\
+\\
+\prod{}_{k,n}(x) & = & \prod_{i=0,i\neq k}^{n}(x-x_{i})
+\end{eqnarray*}
 
 \end_inset
 
@@ -1142,7 +1165,7 @@ sendo
 \end_layout
 
 \begin_layout Subsubsection
-Interpolação de diferênças divididas de Newton
+Interpolação de diferenças divididas de Newton
 \end_layout
 
 \begin_layout Standard
@@ -1152,20 +1175,13 @@ Interpolação de diferênças divididas de Newton
 
  dado por
 \begin_inset Formula 
-\[
-p_{n}(x)=p_{n-1}(x)+(y_{n}-p_{n-1}(x_{n}))\frac{\prod{}_{n-1}(x)}{\prod{}_{n-1}(x)_{n}},p_{0}(x_{0})=y_{0}
-\]
+\begin{eqnarray*}
+p_{n}(x) & = & p_{n-1}(x)+(y_{n}-p_{n-1}(x_{n}))\frac{\prod{}_{n-1}(x)}{\prod{}_{n-1}(x)_{n}},\quad p_{0}(x_{0})=y_{0}
+\end{eqnarray*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-sendo
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 \prod{}_{n-1}(x)=\prod_{i=0}^{n-1}(x-x_{i})
@@ -1182,7 +1198,13 @@ Devido ao mau condicionamento numérico na determinação dos polinômios de
 \end_layout
 
 \begin_layout Subsubsection
-Interpolação spline cúbica
+Interpolação 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ cúbica
 \end_layout
 
 \begin_layout Standard
@@ -1328,7 +1350,7 @@ spline
  da derivada da função.
 \begin_inset CommandInset citation
 LatexCommand cite
-key "NumericalAnalysis"
+key "Burden2008"
 
 \end_inset
 
@@ -1350,21 +1372,11 @@ Supondo que as amostras sejam dadas por
 
  a interpolação é dada por 
 \begin_inset Formula 
-\[
-f(x)=\sum_{k=0}^{n}y_{k}Sa\left[\frac{\Pi}{\delta}(x-k\delta)\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-sendo
-\begin_inset Formula 
-\[
-Sa(x)=\frac{sin(x)}{x}
-\]
+\begin{eqnarray*}
+f(x) & = & \sum_{k=0}^{n}y_{k}Sa\left[\frac{\Pi}{\delta}(x-k\delta)\right]\\
+\\
+Sa(x) & = & \frac{sin(x)}{x}
+\end{eqnarray*}
 
 \end_inset
 
@@ -1376,25 +1388,7 @@ Descrição dos experimentos
 \end_layout
 
 \begin_layout Standard
-Os experimentos comparam os métodos de compressão por interpolação apresentados
- com o os métodos de compressão via 
-\emph on
-wavelets, 
-\emph default
-que foram realizadas utilizando a ferramenta 
-\emph on
-Wavelet Toolbox
-\emph default
- do pacote computacional Matlab
-\begin_inset CommandInset citation
-LatexCommand cite
-key "matlab"
-
-\end_inset
-
-.
- Os parametros de comparação são: Taxa de compressão e distorção do sinal.
- A medida de distorção é dada por 
+A medida de distorção é dada por 
 \begin_inset Formula 
 \[
 PRD=\left[\frac{\sum_{k}(v[k]-d[k]^{2}}{\sum_{k}v^{2}[k]}\right]^{2}\times100
@@ -1406,23 +1400,34 @@ PRD=\left[\frac{\sum_{k}(v[k]-d[k]^{2}}{\sum_{k}v^{2}[k]}\right]^{2}\times100
 \end_layout
 
 \begin_layout Standard
-sendo 
+onde
 \emph on
-v[k]
-\emph default
- o sinal original e 
-\emph on
-d[k]
-\emph default
- o sinal reconstruído.
-\end_layout
+ 
+\begin_inset Formula $v[k]$
+\end_inset
 
-\begin_layout Standard
-Os sinais utilizados nos experimentos são sinais de eletrocardiograma obtidos
- do banco de dados "Research for Complex Physiologic Signals"
+
+\emph default
+ é o sinal original e 
+\emph on
+
+\begin_inset Formula $d[k]$
+\end_inset
+
+
+\emph default
+ é o sinal reconstruído.
+ Os sinais utilizados nos experimentos são sinais de eletrocardiograma obtidos
+ do banco de dados "
+\emph on
+\lang english
+Research for Complex Physiologic Signals
+\emph default
+\lang brazilian
+"
 \begin_inset CommandInset citation
 LatexCommand cite
-key "sinais"
+key "Goldberder2000"
 
 \end_inset
 
@@ -1430,16 +1435,42 @@ key "sinais"
 \end_layout
 
 \begin_layout Subsubsection
-Experimentos
-\end_layout
-
-\begin_layout Subsubsection
-Resultado 1
+Resultados
 \end_layout
 
 \begin_layout Standard
-Foi utilizado o sinal ECG 103 [2], mostrado na Figura 1.
- O sinal possui 1024 amostras no intervalo entre 0 e 2.8147s.
+Foi utilizado o sinal 
+\emph on
+ECG 103
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Goldberder2000"
+
+\end_inset
+
+, mostrado na figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraECG103"
+
+\end_inset
+
+.
+ O sinal possui 
+\begin_inset Formula $1024$
+\end_inset
+
+ amostras no intervalo entre 
+\begin_inset Formula $0$
+\end_inset
+
+ e 
+\begin_inset Formula $2.8147s$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1450,11 +1481,9 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename ../../../../../Desktop/Nova pasta/images/colado3.png
+	filename images/colado3.png
 	scale 40
 
 \end_inset
@@ -1462,105 +1491,440 @@ status collapsed
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Os resultados são apresentados na tabela 1 abaixo:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status collapsed
-
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../../../../Desktop/Nova pasta/images/colado5.png
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Para uma taxa de compressão de 10.9, as compressões utilizando wavelets apresenta
-m menores distorções.
-\end_layout
-
-\begin_layout Standard
-A tabela 2 mostra a maior taxa de compressão para que o sinal recuperado
- apresente uma distorção menor ou igual a 1
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../../../../Desktop/Nova pasta/images/colado6.png
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Novamente os métodos por 
+Sinal 
 \emph on
+ECG 103
+\emph default
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraECG103"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Os resultados são apresentados na tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "TabelaDist1"
+
+\end_inset
+
+.
+ A coluna distorção exibe a distorção para uma taxa de compressão de 
+\emph on
+10.9
+\emph default
+.
+ Já a coluna taxa de compressão exibe a taxa de compressão obtida para que
+ o sinal recuperado apresente uma distorção menor ou igual a 1%.
+ Os métodos utilizando 
+\emph on
+\lang english
+wavelets
+\emph default
+\lang brazilian
+ apresentam menores distorções e melhores taxas de compressão.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Método
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Distorção
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Razão de Compressão
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interpolação linear
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+57.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interpolação cúbica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+57.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.20
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interpolação 
+\emph on
+\lang english
+spline
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+59.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.20
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interpolação de Nyquist/Shannon
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+74.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
 wavelet
 \emph default
- apresentam os melhores resultados.
+\lang brazilian
+ Haar
 \end_layout
 
-\begin_layout Subsubsection
-Resultado 2
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.85
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.74
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+wavelet
+\emph default
+\lang brazilian
+ Db3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.59
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.11
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+wavelet
+\emph default
+\lang brazilian
+ Bior3.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.74
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.05
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+multiwavelet
+\emph default
+\lang brazilian
+ CL1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.71
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.65
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Resultados para o sinal 
+\emph on
+ECG 103
+\emph default
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "TabelaDist1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Foi utilizado o sinal de ECG 08730-07-0 [2], mostrado na Figura 2.
- O sinal utilizado possui 1024 amostras no intervalo entre 0 e 4.0960s.
+Também foi utilizado o sinal de 
+\emph on
+ECG 08730-07-0
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Goldberder2000"
+
+\end_inset
+
+, mostrado na figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraECG08730"
+
+\end_inset
+
+.
+ O sinal utilizado possui 
+\emph on
+
+\begin_inset Formula $1024$
+\end_inset
+
+
+\emph default
+ amostras no intervalo entre 
+\begin_inset Formula $0$
+\end_inset
+
+ e 
+\begin_inset Formula $4.0960s$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1571,11 +1935,9 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename ../../../../../Desktop/Nova pasta/images/colado7.png
+	filename images/colado7.png
 	scale 40
 
 \end_inset
@@ -1583,65 +1945,54 @@ status collapsed
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-A tabela 3 mostra os resultados da distorção na compressão com os mesmos
- parâmetros anteriores.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-placement H
-wide false
-sideways false
-status collapsed
-
 \begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../../../../Desktop/Nova pasta/images/colado8.png
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Mais uma vez a compressão por 
+Sinal 
 \emph on
-wavelet 
+ECG 08730-07-0
+\emph default
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraECG08730"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "TabelaDist3"
+
+\end_inset
+
+ mostra os resultados com os mesmos parâmetros anteriores.
+ Mais uma vez a compressão por 
+\emph on
+\lang english
+wavelet
+\lang brazilian
+ 
 \emph default
 teve resultados melhores do que as compressões por interpolação.
 \end_layout
 
 \begin_layout Standard
-Na tabela 4 temos a raz~]ao de compressão do sinal com distorção menor ou
- igual a 1%
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float table
 placement H
 wide false
@@ -1649,34 +2000,334 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Método
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Distorção
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Razão de Compressão
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interpolação linear
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interpolação cúbica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.14
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interpolação 
+\emph on
+\lang english
+spline
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+18.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.14
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+interpolação de Nyquist/Shannon
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+wavelet
+\emph default
+\lang brazilian
+ Haar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.52
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+wavelet
+\emph default
+\lang brazilian
+ Db3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.55
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+wavelet
+\emph default
+\lang brazilian
+ Bior3.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.31
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+multiwavelet
+\emph default
+\lang brazilian
+ CL1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.41
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../../../../Desktop/Nova pasta/images/colado9.png
-	scale 40
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
+Resultados para o sinal 
 \emph on
-Wavelet
-\emph default
- mais uma vez foi o melhor método de compressão.
+ECG 08730-07-0.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "TabelaDist3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1852,6 +2503,96 @@ target "http://en.wikipedia.org/wiki/Support_(mathematics)"
 
 >.
  Acesso em 16/04/2014.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "WikiCompression"
+
+\end_inset
+
+
+\lang english
+Data compression - Wikipedia, the free encyclopedia
+\lang brazilian
+.
+ Disponível em: <
+\begin_inset CommandInset href
+LatexCommand href
+target "http://en.wikipedia.org/wiki/Data_compression"
+
+\end_inset
+
+>.
+ Acesso em 13/04/2014.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Burden2008"
+
+\end_inset
+
+
+\lang english
+BURDEN; R.
+ L.; FAIRES, J.
+ D.
+ Numerical Analysis.
+ Boston: Brooks/Cole CENGAGE Learning, 2010.
+ 888 p.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Oppenheim2000"
+
+\end_inset
+
+OPPENHEIM, G.; MISITI, M.; MISITI, Y.; POGGI, J.
+ M.
+ 
+\lang english
+Wavelet Toolbox, second edition
+\lang brazilian
+, 2000.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Goldberder2000"
+
+\end_inset
+
+GOLDBERGER, A.
+ L.; AMARAL, L.
+ A.
+ N.; GLASS, L.; HAUSDOR, J.
+ M.; IVANOV, P.
+ C.; MARK, R.
+ G.; MIETUS, J.
+ E., MOODY, G.
+ B.; PENG, C.
+ K.; STANLEY, H.
+ E.
+ 
+\lang english
+PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource
+ for complex physiologic signals.
+ 
+\series bold
+Circulation
+\series default
+\lang brazilian
+, v.
+ 101, n.
+ 23, p.
+ 215-220, jun.
+ 2013.
 \end_layout
 
 \end_body
