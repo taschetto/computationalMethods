@@ -1085,9 +1085,598 @@ wavelets
  (por Cristiano Guilloux)
 \end_layout
 
-\begin_layout Standard
-\SpecialChar \ldots{}
+\begin_layout Subsubsection
+Interpolação polinomial
+\end_layout
 
+\begin_layout Standard
+Na interpolação polinomial obtem-se um polinômio de grau 
+\emph on
+n, p
+\begin_inset Formula $_{n}$
+\end_inset
+
+(x), 
+\emph default
+que satisfaça os 
+\emph on
+(n+1) 
+\emph default
+pontos fornecidos.
+ Em geral escolhe-se polinômios de grau inferior ao número de amostras suprimida
+s, por ter uma obtenção de polinômio numericamente instável.
+\end_layout
+
+\begin_layout Subsubsection
+Interpolação de Lagrange
+\end_layout
+
+\begin_layout Standard
+O algoritmo de interpolação de Lagrange é dado por
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+p_{n}(x)=\sum_{k=0}^{n}y_{k}\frac{\prod_{k,n}(x)}{\prod_{k,n}(x)_{k}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+sendo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\prod{}_{k,n}(x)=\prod_{i=0,i\neq k}^{n}(x-x_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Interpolação de diferênças divididas de Newton
+\end_layout
+
+\begin_layout Standard
+É um algoritmo iterativo com o polinômio 
+\begin_inset Formula $p_{n}(x)$
+\end_inset
+
+ dado por
+\begin_inset Formula 
+\[
+p_{n}(x)=p_{n-1}(x)+(y_{n}-p_{n-1}(x_{n}))\frac{\prod{}_{n-1}(x)}{\prod{}_{n-1}(x)_{n}},p_{0}(x_{0})=y_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+sendo
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\prod{}_{n-1}(x)=\prod_{i=0}^{n-1}(x-x_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Devido ao mau condicionamento numérico na determinação dos polinômios de
+ interpolação, é conveniente o uso de polinômios de no máximo grau 3.
+\end_layout
+
+\begin_layout Subsubsection
+Interpolação spline cúbica
+\end_layout
+
+\begin_layout Standard
+Dada uma função 
+\begin_inset Formula $f$
+\end_inset
+
+ definida no intervalo 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ e um conjunto de pontos 
+\begin_inset Formula $a=x_{0}<x_{1}<\ldots<x_{n}=b$
+\end_inset
+
+, a 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ cúbica interpoladora 
+\begin_inset Formula $S$
+\end_inset
+
+ para 
+\begin_inset Formula $f$
+\end_inset
+
+ é uma função que satisfaz as seguintes condições:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S(x)$
+\end_inset
+
+é um polinômio cúbico no formato 
+\begin_inset Formula $S_{j}(x)=a_{j}+b_{j}(x-x_{j})+c_{j}(x-x_{j})^{2}+d_{j}(x-x_{j})^{3}$
+\end_inset
+
+, válido no intervalo 
+\begin_inset Formula $[x_{j},x_{j+1}]$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n-1$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S(x_{j})=f(x_{j})$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{j+1}(x_{j+1})=S_{j}(x_{j+1})$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n-2$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{j+1}^{'}(x_{j+1})=S_{j}^{'}(x_{j+1})$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n-2$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{j+1}^{''}(x_{j+1})=S_{j}^{''}(x_{j+1})$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n-2$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Uma das seguintes condições de limite é satisfeita:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $S^{'''}(x_{0})=S^{''}(x_{n})=0$
+\end_inset
+
+ (limite natural ou livre);
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S^{'}(x_{0})=f^{'}(x_{0})$
+\end_inset
+
+ e 
+\begin_inset Formula $S^{'}(x_{n})=f^{'}(x_{n})$
+\end_inset
+
+ (limite fixado);
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Cada uma das condições de limite da origem à um tipo de 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+.
+ Quando ocorre a condição de limite natural ocorre, a 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ é chamada de 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ natural.
+ Por outro lado, quando a condição de limite fixado é utilizada, a tendência
+ é obter-se um resultado mais preciso, uma vez leva em conta a informação
+ da derivada da função.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NumericalAnalysis"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Interpolação de Nyquist/Shannon
+\end_layout
+
+\begin_layout Standard
+Supondo que as amostras sejam dadas por 
+\begin_inset Formula $x_{k}=k\delta$
+\end_inset
+
+ , 
+\begin_inset Formula $k=0,...,n$
+\end_inset
+
+ a interpolação é dada por 
+\begin_inset Formula 
+\[
+f(x)=\sum_{k=0}^{n}y_{k}Sa\left[\frac{\Pi}{\delta}(x-k\delta)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+sendo
+\begin_inset Formula 
+\[
+Sa(x)=\frac{sin(x)}{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Descrição dos experimentos
+\end_layout
+
+\begin_layout Standard
+Os experimentos comparam os métodos de compressão por interpolação apresentados
+ com o os métodos de compressão via 
+\emph on
+wavelets, 
+\emph default
+que foram realizadas utilizando a ferramenta 
+\emph on
+Wavelet Toolbox
+\emph default
+ do pacote computacional Matlab
+\begin_inset CommandInset citation
+LatexCommand cite
+key "matlab"
+
+\end_inset
+
+.
+ Os parametros de comparação são: Taxa de compressão e distorção do sinal.
+ A medida de distorção é dada por 
+\begin_inset Formula 
+\[
+PRD=\left[\frac{\sum_{k}(v[k]-d[k]^{2}}{\sum_{k}v^{2}[k]}\right]^{2}\times100
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+sendo 
+\emph on
+v[k]
+\emph default
+ o sinal original e 
+\emph on
+d[k]
+\emph default
+ o sinal reconstruído.
+\end_layout
+
+\begin_layout Standard
+Os sinais utilizados nos experimentos são sinais de eletrocardiograma obtidos
+ do banco de dados "Research for Complex Physiologic Signals"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sinais"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Experimentos
+\end_layout
+
+\begin_layout Subsubsection
+Resultado 1
+\end_layout
+
+\begin_layout Standard
+Foi utilizado o sinal ECG 103 [2], mostrado na Figura 1.
+ O sinal possui 1024 amostras no intervalo entre 0 e 2.8147s.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../../Desktop/Nova pasta/images/colado3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Os resultados são apresentados na tabela 1 abaixo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../../Desktop/Nova pasta/images/colado5.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para uma taxa de compressão de 10.9, as compressões utilizando wavelets apresenta
+m menores distorções.
+\end_layout
+
+\begin_layout Standard
+A tabela 2 mostra a maior taxa de compressão para que o sinal recuperado
+ apresente uma distorção menor ou igual a 1
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../../Desktop/Nova pasta/images/colado6.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Novamente os métodos por 
+\emph on
+wavelet
+\emph default
+ apresentam os melhores resultados.
+\end_layout
+
+\begin_layout Subsubsection
+Resultado 2
+\end_layout
+
+\begin_layout Standard
+Foi utilizado o sinal de ECG 08730-07-0 [2], mostrado na Figura 2.
+ O sinal utilizado possui 1024 amostras no intervalo entre 0 e 4.0960s.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../../Desktop/Nova pasta/images/colado7.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A tabela 3 mostra os resultados da distorção na compressão com os mesmos
+ parâmetros anteriores.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../../Desktop/Nova pasta/images/colado8.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mais uma vez a compressão por 
+\emph on
+wavelet 
+\emph default
+teve resultados melhores do que as compressões por interpolação.
+\end_layout
+
+\begin_layout Standard
+Na tabela 4 temos a raz~]ao de compressão do sinal com distorção menor ou
+ igual a 1%
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../../../../Desktop/Nova pasta/images/colado9.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Wavelet
+\emph default
+ mais uma vez foi o melhor método de compressão.
 \end_layout
 
 \begin_layout Subsection
