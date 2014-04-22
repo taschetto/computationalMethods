@@ -2336,8 +2336,14 @@ Avaliação de interpoladores estáticos e determinísticos na estimativa de
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+Este artigo apresenta dois métodos de interpolação comumente utilizados
+ para análises espaciais, geração de mapas, BLABLA.
+ Os métodos são, principalmente e, habitualmente utilizados em sistemas
+ de informação geográfica e dentro da estatística, na área da geoestatística...
+\end_layout
 
+\begin_layout Subsubsection*
+2.3.1 Krigagem
 \end_layout
 
 \begin_layout Section
