@@ -26,7 +26,18 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_title "Métodos Numéricos de Interpolação --- Indo Além"
+\pdf_author "Guilherme Taschetto; Cristiano Guilloux; Ludgero Gil Mascarenhas"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize a4paper
 \use_geometry true
 \use_amsmath 1
@@ -468,7 +479,7 @@ reference "FiguraCoef"
 
 \end_inset
 
-), podendo ser obtida a partir de 
+), podendo ser obtida a partir da equação 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:1"
@@ -718,7 +729,7 @@ reference "eq:4"
 
 \end_inset
 
-, 
+, a equação
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:2"
@@ -772,6 +783,7 @@ Extrapolar este esquema para o caso N-dimensional permite perceber o ganho
 \end_layout
 
 \begin_layout Standard
+A equação 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:5"
@@ -879,7 +891,7 @@ on-the-fly
 GPU
 \emph default
 \lang brazilian
- utilizando 
+ utilizando a equação 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:5"
@@ -1153,11 +1165,9 @@ O algoritmo de interpolação de Lagrange é dado por
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{eqnarray*}
-p_{n}(x) & = & \sum_{k=0}^{n}y_{k}\frac{\prod_{k,n}(x)}{\prod_{k,n}(x)_{k}}\\
-\\
-\prod{}_{k,n}(x) & = & \prod_{i=0,i\neq k}^{n}(x-x_{i})
-\end{eqnarray*}
+\[
+p_{n}(x)=\sum_{k=0}^{n}y_{k}\frac{\prod_{k,n}(x)}{\prod_{k,n}(x)_{k}}\prod{}_{k,n}(x)=\prod_{i=0,i\neq k}^{n}(x-x_{i})
+\]
 
 \end_inset
 
@@ -1175,9 +1185,9 @@ Interpolação de diferenças divididas de Newton
 
  dado por
 \begin_inset Formula 
-\begin{eqnarray*}
-p_{n}(x) & = & p_{n-1}(x)+(y_{n}-p_{n-1}(x_{n}))\frac{\prod{}_{n-1}(x)}{\prod{}_{n-1}(x)_{n}},\quad p_{0}(x_{0})=y_{0}
-\end{eqnarray*}
+\[
+p_{n}(x)=p_{n-1}(x)+(y_{n}-p_{n-1}(x_{n}))\frac{\prod{}_{n-1}(x)}{\prod{}_{n-1}(x)_{n}},\quad p_{0}(x_{0})=y_{0}
+\]
 
 \end_inset
 
@@ -1997,7 +2007,7 @@ teve resultados melhores do que as compressões por interpolação.
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2338,8 +2348,8 @@ Avaliação de interpoladores estáticos e determinísticos na estimativa de
 \begin_layout Standard
 Este artigo apresenta dois métodos de interpolação comumente utilizados
  para análises espaciais e geração de mapas.
- Os métodos são, principalmente e, habitualmente utilizados em sistemas
- de informação geográfica e dentro da estatística, no campo da geoestatística.
+ Os métodos são habitualmente utilizados em sistemas de informação geográfica
+ e dentro da estatística, no campo da geo estatística.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2347,8 +2357,8 @@ Krigagem
 \end_layout
 
 \begin_layout Standard
-O método de interpolação da Krigagem ajusta um modelo para o comportamento
- da variância espacial dos dados amostrados, e usa esse modelo, para estimar
+O método de interpolação de Krigagem ajusta um modelo para o comportamento
+ da variância espacial dos dados amostrados, e usa esse modelo para estimar
  os valores dos pontos de uma grade regular.
  É necessário que a variável estudada apresente dependência espacial para
  a confecção de mapas por krigagem.
@@ -2358,105 +2368,24 @@ O método de interpolação da Krigagem ajusta um modelo para o comportamento
 \end_layout
 
 \begin_layout Standard
-\align center
-\begin_inset Formula $\mathit{Z}$
-\end_inset
+\begin_inset Formula 
+\begin{eqnarray*}
+\mathit{Z}(x_{i},x{}_{i}+\mathit{h}) & = & \sum\lambda_{i}\mathit{Z}(x_{i},x{}_{i}+\mathit{h})\\
+\\
+\sum\lambda_{i} & = & 1
+\end{eqnarray*}
 
-(
-\begin_inset Formula $x_{i}$
-\end_inset
-
-, 
-\begin_inset Formula $x{}_{i}$
-\end_inset
-
-+
-\begin_inset Formula $\mathit{h}$
-\end_inset
-
-) = 
-\begin_inset Formula $\sum$
-\end_inset
-
- 
-\begin_inset Formula $\lambda_{i}$
 \end_inset
 
 
-\begin_inset Formula $\mathit{Z}$
-\end_inset
-
-(
-\begin_inset Formula $x_{i}$
-\end_inset
-
-, 
-\begin_inset Formula $x{}_{i}$
-\end_inset
-
-+
-\begin_inset Formula $\mathit{h}$
-\end_inset
-
-) 
 \end_layout
 
 \begin_layout Standard
-\align center
-sujeito a: 
-\begin_inset Formula $\sum$
+Onde 
+\begin_inset Formula $\mathit{Z}(x_{i},x{}_{i}+\mathit{h})$
 \end_inset
 
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\lang english
-
-\begin_inset Formula $\lambda_{i}=$
-\end_inset
-
-
-\family default
-\series default
-\shape default
-\size default
-\emph on
-\bar default
-\strikeout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
-1
-\end_layout
-
-\begin_layout Standard
-em que: 
-\begin_inset Formula $\mathit{Z}$
-\end_inset
-
-(
-\begin_inset Formula $x_{i}$
-\end_inset
-
-, 
-\begin_inset Formula $x{}_{i}$
-\end_inset
-
-+
-\begin_inset Formula $\mathit{h}$
-\end_inset
-
-) é o estimador para um ponto da região e 
+ é o estimador para um ponto da região e 
 \begin_inset Formula $\lambda_{i}$
 \end_inset
 
@@ -2464,7 +2393,7 @@ em que:
 \end_layout
 
 \begin_layout Standard
-Utilizou-se neste caso, variação do método da krigagem, onde: as médias
+Utilizou-se neste caso uma variação do método da krigagem onde as médias
  locais não são necessariamente próximas da média da população, usando-se
  apenas os pontos vizinhos para a estimação.
  É o método mais usado em problemas ambientais.
@@ -2477,7 +2406,7 @@ Inverso do Quadrado da Distância
 \begin_layout Standard
 O método interpolador do inverso do quadrado da distância (IDW) é um interpolado
 r determinístico, univariado com médias ponderadas.
- O método baseia-se na dependencia espacial, ou seja, quanto mais próximo
+ O método baseia-se na dependência espacial, ou seja, quanto mais próximo
  um ponto estiver de outro, maior será a correlação entre os seus valores.
  Dessa forma, atribui-se um 
 \begin_inset Quotes eld
@@ -2490,11 +2419,11 @@ peso
  maior aos pontos mais próximos do ponto amostrado.
  Assim, o método consiste em multiplicar os valores das observações pelo
  inverso das suas respectivas distâncias ao ponto de referência para a interpola
-ção dos valores.O método tem a seguinte fórmula:
+ção dos valores.
+ O método tem a seguinte fórmula:
 \end_layout
 
 \begin_layout Standard
-\align center
 
 \lang english
 \begin_inset Formula 
@@ -2508,9 +2437,35 @@ peso
 \end_layout
 
 \begin_layout Standard
-em que: z = valor estimado para o ponto z; n = número de amostras; zi =
- valores conhecidos; di = distâncias entre os valores conhecidos e o estimado
- ( zi e z).
+Onde 
+\begin_inset Formula $z$
+\end_inset
+
+ é o valor estimado para o ponto 
+\begin_inset Formula $z$
+\end_inset
+
+; 
+\begin_inset Formula $n$
+\end_inset
+
+ é número de amostras; 
+\begin_inset Formula $zi$
+\end_inset
+
+ são os valores conhecidos; 
+\begin_inset Formula $di$
+\end_inset
+
+ são as distâncias entre os valores conhecidos e o estimado (
+\begin_inset Formula $zi$
+\end_inset
+
+ e 
+\begin_inset Formula $z$
+\end_inset
+
+).
  
 \end_layout
 
@@ -2521,7 +2476,7 @@ Resultados
 \begin_layout Standard
 O estudo teve como objetivo comparar os resultados do métodos citados à
  cima na estimativa de CTC (Capacidade de Troca Catiônica) e V% (Soma de
- Bases) em um Latossolo vermelho amarelo distrófico
+ Bases) em um Latossolo Vermelho-Amarelo distrófico
 \begin_inset Foot
 status collapsed
 
@@ -2529,21 +2484,25 @@ status collapsed
 Os Latossolos Vermelho-Amarelos são identificados em extensas áreas dispersas
  em todo o território nacional associados aos relevos, plano, suave ondulado
  ou ondulado.
+ Ver 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Embrapa"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
 
 .
- A partir da coleta de 109 pontos amostrais (coordenadas adquiridas com
- auxílio de um GPS topográfico) em uma grade irregular, aplicou-se os métodos
- de interpolação.
+ A partir da coleta de 
+\begin_inset Formula $109$
+\end_inset
+
+ pontos amostrais (coordenadas adquiridas com auxílio de um GPS topográfico)
+ em uma grade irregular, aplicou-se os métodos de interpolação.
  A performance dos interpoladores foi obtida e comparada usando o critério
  do erro médio
 \begin_inset Foot
@@ -2551,23 +2510,29 @@ status collapsed
 
 \begin_layout Plain Layout
 O Erro Quadrático Médio é uma ferramenta útil para decidir como um determinado
- modelo é apropriado para os dados
+ modelo é apropriado para os dados.
+ Ver 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ErrroMedio"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="10">
@@ -2865,15 +2830,60 @@ V%
 
 \end_layout
 
-\begin_layout Standard
-\align center
-Tabela 1: s - desvio padrão, CV - coeficiente de variação, Cs - coeficiente
- de simetria, Ck - coeficiente de cutose, ns - distribuição normal pelo
- teste Shapiro-Wilk's (W) a 5% de probabilidade.
- 
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Formula $s$
+\end_inset
+
+ - desvio padrão; 
+\begin_inset Formula $CV$
+\end_inset
+
+ - coeficiente de variação; 
+\begin_inset Formula $Cs$
+\end_inset
+
+ - coeficiente de simetria; 
+\begin_inset Formula $Ck$
+\end_inset
+
+ - coeficiente de cutose; 
+\begin_inset Formula $ns$
+\end_inset
+
+ - distribuição normal pelo teste Shapiro-Wilk's (W) a 5% de probabilidade.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "TabelaResult31"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
@@ -2891,7 +2901,7 @@ Tabela 1: s - desvio padrão, CV - coeficiente de variação, Cs - coeficiente
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2900,7 +2910,7 @@ Erro Médio
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -3004,32 +3014,73 @@ IDW
 
 \end_layout
 
-\begin_layout Standard
-\align center
-Tabela 2: Valores de erro médio para os interpoladores usados na distribuição
- espacial da CTC e V%.
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Valores de erro médio para os interpoladores usados na distribuição espacial
+ da CTC e V%.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "TabelaResult32"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-A Tabela 1 apresenta os resultados da análise descritiva da CTC e V%, apos
- a retirada dos valores discrepantes.
+A tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "TabelaResult31"
+
+\end_inset
+
+ apresenta os resultados da análise descritiva da CTC e V%, apos a retirada
+ dos valores discrepantes.
  O resultados indicam que as variáveis apresentam dependência espacial,
  ajustando-se o modelo esférico(CTC) e exponencial (V%).
-\end_layout
+ A tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "TabelaResult32"
 
-\begin_layout Standard
-A Tabela 2 apresenta os resultados obtidos para os critérios de comparação
- do erro médio entre os métodos de interpolção.
- Analisando os resultados obtidos na Tabela 2 percebe-se que os menores
- erros foram obtidos para krigagem, entretanto a diferença entre os métodos
- é pequena, visto que para a variável CTC onde esta é mínima.
+\end_inset
+
+ apresenta os resultados obtidos para os critérios de comparação do erro
+ médio entre os métodos de interpolação.
+ Analisando os resultados obtidos na tabela 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "TabelaResult32"
+
+\end_inset
+
+ percebe-se que os menores erros foram obtidos para krigagem, entretanto
+ a diferença entre os métodos é pequena, visto que para a variável CTC onde
+ esta é mínima.
  Tem-se uma diferença mais significativa para a variável V%, o que pode
- estar relacionado ao modelo teórico que foi utilizado(semivariograma).
+ estar relacionado ao modelo teórico que foi utilizado (semivariograma).
 \end_layout
 
 \begin_layout Standard
 Neste caso específico, notou-se que os dois interpoladores apresentaram
- boa precisão para a estimativa de valores locais não-amostrados para a
+ boa precisão para a estimativa de valores locais não amostrados para a
  variável CTC, com erros médios pequenos, mas para a segunda variável esses
  erros foram altos para ambos métodos.
  O inverso do quadrado da distância apresentou maior erro na estimação dos
@@ -3041,8 +3092,15 @@ Conclusões
 \end_layout
 
 \begin_layout Standard
-Os diversos métodos numéricos de interpolação existentes fornecem uma extensa
- gama de possibilidades para resolver os mais variados problemas.
+Os diversos métodos numéricos de interpolação existentes, e.
+ g., Lagrande, Newton, 
+\emph on
+\lang english
+Spline
+\emph default
+\lang brazilian
+, Krigagem, Nyquist/Shannon, fornecem uma extensa gama de possibilidades
+ para resolver os mais variados problemas.
  Entretanto, também é necessário conhecer e avaliar aplicação e seus requisitos
  a fim de escolher o método mais apropriado.
  Tais requisitos podem ser, por exemplo:
@@ -3053,7 +3111,11 @@ Tempo de execução;
 \end_layout
 
 \begin_layout Itemize
-Qualidade do resultado (precisão, erro, etc);
+Qualidade do resultado (precisão);
+\end_layout
+
+\begin_layout Itemize
+Tolerância à erros;
 \end_layout
 
 \begin_layout Itemize
@@ -3168,9 +3230,13 @@ Wikipedia, the free encyclopedia
 \lang brazilian
 .
  Disponível em: <
-\begin_inset CommandInset href
-LatexCommand href
-target "http://en.wikipedia.org/wiki/B-spline"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://en.wikipedia.org/wiki/B-spline
+\end_layout
 
 \end_inset
 
@@ -3191,9 +3257,13 @@ Support (mathematics) - Wikipedia, the free encyclopedia
 \lang brazilian
 .
  Disponível em: <
-\begin_inset CommandInset href
-LatexCommand href
-target "http://en.wikipedia.org/wiki/Support_(mathematics)"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://en.wikipedia.org/wiki/Support_(mathematics)
+\end_layout
 
 \end_inset
 
@@ -3214,9 +3284,13 @@ Data compression - Wikipedia, the free encyclopedia
 \lang brazilian
 .
  Disponível em: <
-\begin_inset CommandInset href
-LatexCommand href
-target "http://en.wikipedia.org/wiki/Data_compression"
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://en.wikipedia.org/wiki/Data_compression
+\end_layout
 
 \end_inset
 
@@ -3299,8 +3373,21 @@ key "Embrapa"
 
 \end_inset
 
+Agência Embrapa de Informação Tecnológica - Latossolos Vermelho-Amarelos.
+ Disponível em: <
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
 http://www.agencia.cnptia.embrapa.br/gestor/solos_tropicais/arvore/CONT000g05ip3qr02
 wx5ok0q43a0r3t5vjo4.html
+\end_layout
+
+\end_inset
+
+>.
+ Acesso em: 23/04/2014.
 \end_layout
 
 \begin_layout Bibliography
@@ -3311,7 +3398,20 @@ key "ErrroMedio"
 
 \end_inset
 
-http://www.ehow.com.br/definicao-erro-quadratico-medio-eqm-fatos_6235/ 
+Definição de erro quadrático médio (eqm) | eHow Brasil.
+ Disponível em: <
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.ehow.com.br/definicao-erro-quadratico-medio-eqm-fatos_6235/
+\end_layout
+
+\end_inset
+
+>.
+ Acesso em: 23/04/2014.
 \end_layout
 
 \end_body
