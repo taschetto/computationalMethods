@@ -2503,10 +2503,7 @@ key "ErrroMedio"
 \end_layout
 
 \begin_layout Standard
-EXPLICAR TABELA
-\end_layout
-
-\begin_layout Standard
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="10">
 <features tabularvalignment="middle">
@@ -2804,6 +2801,7 @@ V%
 \end_layout
 
 \begin_layout Standard
+\align center
 Tabela 1: s - desvio padrão, CV - coeficiente de variação, Cs - coeficiente
  de simetria, Ck - coeficiente de cutose, ns - distribuição normal pelo
  teste Shapiro-Wilk's (W) a 5% de probabilidade.
@@ -2811,6 +2809,7 @@ Tabela 1: s - desvio padrão, CV - coeficiente de variação, Cs - coeficiente
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features tabularvalignment="middle">
@@ -2941,12 +2940,35 @@ IDW
 \end_layout
 
 \begin_layout Standard
+\align center
 Tabela 2: Valores de erro médio para os interpoladores usados na distribuição
  espacial da CTC e V%.
 \end_layout
 
 \begin_layout Standard
-EXPLICAR TABELA
+A Tabela 1 apresenta os resultados da análise descritiva da CTC e V%, apos
+ a retirada dos valores discrepantes.
+ O resultados indicam que as variáveis apresentam dependência espacial,
+ ajustando-se o modelo esférico(CTC) e exponencial (V%).
+\end_layout
+
+\begin_layout Standard
+A Tabela 2 apresenta os resultados obtidos para os critérios de comparação
+ do erro médio entre os métodos de interpolção.
+ Analisando os resultados obtidos na Tabela 2 percebe-se que os menores
+ erros foram obtidos para krigagem, entretanto a diferença entre os métodos
+ é pequena, visto que para a variável CTC onde esta é mínima.
+ Tem-se uma diferença mais significativa para a variável V%, o que pode
+ estar relacionado ao modelo teórico que foi utilizado.(semivariograma).
+\end_layout
+
+\begin_layout Standard
+Neste especifico caso, notou-se que os dois interpoladores apresentaram
+ boa precisão para a estimativa de valores locais não-amostrados para a
+ variável CTC, com erros médios pequenos, mas para a segunda variável esses
+ erros foram altos, para ambos métodos.
+ O inverso do quadrado da distância apresentou maior erro na estimação dos
+ dados, mas não mostrou muita diferença quando comparado ao método da krigagem.
 \end_layout
 
 \begin_layout Section
