@@ -2497,7 +2497,11 @@ peso
 \align center
 
 \lang english
-\begin_inset Formula $z=\frac{\sum_{i-1}^{n}\frac{1}{d_{i}^{2}}\times z_{i}}{\sum_{i-1}^{n}\frac{1}{d_{i}^{2}}}$
+\begin_inset Formula 
+\[
+{\displaystyle z=\frac{{\displaystyle \sum_{i-1}^{n}\frac{1}{d_{i}^{2}}\times z_{i}}}{{\displaystyle \sum_{i-1}^{n}\frac{1}{d_{i}^{2}}}}}
+\]
+
 \end_inset
 
 
