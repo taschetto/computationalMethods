@@ -1553,7 +1553,7 @@ wavelets
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2358,10 +2358,7 @@ O método de interpolação da Krigagem ajusta um modelo para o comportamento
 \end_layout
 
 \begin_layout Standard
-FORMULA
-\end_layout
-
-\begin_layout Standard
+\align center
 \begin_inset Formula $\mathit{Z}$
 \end_inset
 
@@ -2381,7 +2378,65 @@ FORMULA
 \begin_inset Formula $\sum$
 \end_inset
 
- CONTINUAR
+ 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+
+\begin_inset Formula $\mathit{Z}$
+\end_inset
+
+(
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $x{}_{i}$
+\end_inset
+
++
+\begin_inset Formula $\mathit{h}$
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Standard
+\align center
+sujeito a: 
+\begin_inset Formula $\sum$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\lambda_{i}=$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+1
 \end_layout
 
 \begin_layout Standard
@@ -2439,7 +2494,13 @@ peso
 \end_layout
 
 \begin_layout Standard
-COLOCAR FORMULA(NAO SEI COLOCAR)
+\align center
+
+\lang english
+\begin_inset Formula $z=\frac{\sum_{i-1}^{n}\frac{1}{d_{i}^{2}}\times z_{i}}{\sum_{i-1}^{n}\frac{1}{d_{i}^{2}}}$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2458,7 +2519,7 @@ O estudo teve como objetivo comparar os resultados do métodos citados à
  cima na estimativa de CTC (Capacidade de Troca Catiônica) e V% (Soma de
  Bases) em um Latossolo vermelho amarelo distrófico
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Os Latossolos Vermelho-Amarelos são identificados em extensas áreas dispersas
@@ -2482,7 +2543,7 @@ key "Embrapa"
  A performance dos interpoladores foi obtida e comparada usando o critério
  do erro médio
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 O Erro Quadrático Médio é uma ferramenta útil para decidir como um determinado
