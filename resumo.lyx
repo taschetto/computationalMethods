@@ -2339,11 +2339,614 @@ Avaliação de interpoladores estáticos e determinísticos na estimativa de
 Este artigo apresenta dois métodos de interpolação comumente utilizados
  para análises espaciais, geração de mapas, BLABLA.
  Os métodos são, principalmente e, habitualmente utilizados em sistemas
- de informação geográfica e dentro da estatística, na área da geoestatística...
+ de informação geográfica e dentro da estatística, na área da geoestatística..
 \end_layout
 
-\begin_layout Subsubsection*
-2.3.1 Krigagem
+\begin_layout Subsubsection
+Krigagem
+\end_layout
+
+\begin_layout Standard
+O método de interpolação da Krigagem ajusta um modelo para o comportamento
+ da variância espacial dos dados amostrados, e usa esse modelo, para estimar
+ os valores dos pontos de uma grade regular.
+ É necessário que a variável estudada apresente dependência espacial para
+ a confecção de mapas por krigagem.
+ O estudo da dependência espacial é feito por análise do semivariograma,
+ que é a ferramenta mais adequada para medir a dependência espacial.
+ O método tem a seguinte fórmula:
+\end_layout
+
+\begin_layout Standard
+FORMULA
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathit{Z}$
+\end_inset
+
+(
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $x{}_{i}$
+\end_inset
+
++
+\begin_inset Formula $\mathit{h}$
+\end_inset
+
+) = 
+\begin_inset Formula $\sum$
+\end_inset
+
+ CONTINUAR
+\end_layout
+
+\begin_layout Standard
+em que: 
+\begin_inset Formula $\mathit{Z}$
+\end_inset
+
+(
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $x{}_{i}$
+\end_inset
+
++
+\begin_inset Formula $\mathit{h}$
+\end_inset
+
+) é o estimador para um ponto da região e 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ são os pesos usados na estimativa.
+\end_layout
+
+\begin_layout Standard
+Utilizou-se neste caso, variação do método da krigagem: krigagem ordinária,
+ onde: as médias locais não são necessariamente próximas da média da população
+ usando-se apenas os pontos vizinhos para a estimação.
+ É o método mais usado em problemas ambientais.
+\end_layout
+
+\begin_layout Subsubsection
+Inverso do Quadrado da Distância
+\end_layout
+
+\begin_layout Standard
+O método interpolador do inverso do quadrado da distância (IDW) é um interpolado
+r determinístico, univariado com médias ponderadas.
+ O método baseia-se na dependencia espacial, ou seja, quanto mais próximo
+ um ponto estiver de outro, maior será a correlação entre os seus valores.
+ Dessa forma, atribui-se um 
+\begin_inset Quotes eld
+\end_inset
+
+peso
+\begin_inset Quotes erd
+\end_inset
+
+ maior aos pontos mais próximos do ponto amostrado.
+ Assim, o método consiste em multiplicar os valores das observações pelo
+ inverso das suas respectivas distâncias ao ponto de referência para a interpola
+ção dos valores.O método tem a seguinte fórmula:
+\end_layout
+
+\begin_layout Standard
+COLOCAR FORMULA(NAO SEI COLOCAR)
+\end_layout
+
+\begin_layout Standard
+em que: z = valor estimado para o ponto z; n = número de amostras; zi =
+ valores conhecidos; di = distâncias entre os valores conhecidos e o estimado
+ ( zi e z).
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Resultados
+\end_layout
+
+\begin_layout Standard
+O estudo teve como objetivo comparar os resultados do métodos citados à
+ cima na estimativa de CTC (Capacidade de Troca Catiônica) e V% (Soma de
+ Bases) em um Latossolo vermelho amarelo distrófico
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Os Latossolos Vermelho-Amarelos são identificados em extensas áreas dispersas
+ em todo o território nacional associados aos relevos, plano, suave ondulado
+ ou ondulado.
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Embrapa"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ A partir da coleta de 109 pontos amostrais (coordenadas adquiridas com
+ auxílio de um GPS topográfico) em uma grade irregular, aplicou-se os métodos
+ de interpolação.
+ A performance dos interpoladores foi obtida e comparada usando o critério
+ do erro médio
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+O Erro Quadrático Médio é uma ferramenta útil para decidir como um determinado
+ modelo é apropriado para os dados
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ErrroMedio"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+EXPLICAR TABELA
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="10">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Média
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mediana
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mínimo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Máximo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CV(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ck
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+w
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CTC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7,87
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7,70
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4,70
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11,80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17,48
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,38
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0,10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,82ns
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40,30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+39,45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4,90
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+68,70
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29,25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11,70
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0,02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,28
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,84ns
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tabela 1: s - desvio padrão, CV - coeficiente de variação, Cs - coeficiente
+ de simetria, Ck - coeficiente de cutose, ns - distribuição normal pelo
+ teste Shapiro-Wilk's (W) a 5% de probabilidade.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Erro Médio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interpoladores
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CTC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+V%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+KRIG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18,31
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+314,75
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IDW
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18,50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+319,95
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tabela 2: Valores de erro médio para os interpoladores usados na distribuição
+ espacial da CTC e V%.
+\end_layout
+
+\begin_layout Standard
+EXPLICAR TABELA
 \end_layout
 
 \begin_layout Section
@@ -2599,6 +3202,29 @@ Circulation
  23, p.
  215-220, jun.
  2013.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "10"
+key "Embrapa"
+
+\end_inset
+
+http://www.agencia.cnptia.embrapa.br/gestor/solos_tropicais/arvore/CONT000g05ip3qr02
+wx5ok0q43a0r3t5vjo4.html
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "11"
+key "ErrroMedio"
+
+\end_inset
+
+http://www.ehow.com.br/definicao-erro-quadratico-medio-eqm-fatos_6235/ 
 \end_layout
 
 \end_body
