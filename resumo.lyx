@@ -2337,9 +2337,9 @@ Avaliação de interpoladores estáticos e determinísticos na estimativa de
 
 \begin_layout Standard
 Este artigo apresenta dois métodos de interpolação comumente utilizados
- para análises espaciais, geração de mapas, BLABLA.
+ para análises espaciais e geração de mapas.
  Os métodos são, principalmente e, habitualmente utilizados em sistemas
- de informação geográfica e dentro da estatística, na área da geoestatística..
+ de informação geográfica e dentro da estatística, no campo da geoestatística.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2464,9 +2464,9 @@ em que:
 \end_layout
 
 \begin_layout Standard
-Utilizou-se neste caso, variação do método da krigagem: krigagem ordinária,
- onde: as médias locais não são necessariamente próximas da média da população
- usando-se apenas os pontos vizinhos para a estimação.
+Utilizou-se neste caso, variação do método da krigagem, onde: as médias
+ locais não são necessariamente próximas da média da população, usando-se
+ apenas os pontos vizinhos para a estimação.
  É o método mais usado em problemas ambientais.
 \end_layout
 
@@ -3020,14 +3020,14 @@ A Tabela 2 apresenta os resultados obtidos para os critérios de comparação
  erros foram obtidos para krigagem, entretanto a diferença entre os métodos
  é pequena, visto que para a variável CTC onde esta é mínima.
  Tem-se uma diferença mais significativa para a variável V%, o que pode
- estar relacionado ao modelo teórico que foi utilizado.(semivariograma).
+ estar relacionado ao modelo teórico que foi utilizado(semivariograma).
 \end_layout
 
 \begin_layout Standard
-Neste especifico caso, notou-se que os dois interpoladores apresentaram
+Neste caso específico, notou-se que os dois interpoladores apresentaram
  boa precisão para a estimativa de valores locais não-amostrados para a
  variável CTC, com erros médios pequenos, mas para a segunda variável esses
- erros foram altos, para ambos métodos.
+ erros foram altos para ambos métodos.
  O inverso do quadrado da distância apresentou maior erro na estimação dos
  dados, mas não mostrou muita diferença quando comparado ao método da krigagem.
 \end_layout
