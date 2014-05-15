@@ -79,11 +79,11 @@ Guilherme de M.
 \end_layout
 
 \begin_layout Section*
-Introdução
+Exercício
 \end_layout
 
 \begin_layout Standard
-Blah blah blah blah.
+Calcular todas as raízes (reais e complexas) do seguinte polinômio:
 \end_layout
 
 \begin_layout Standard
@@ -122,7 +122,7 @@ De
 \begin_inset Formula $T'$
 \end_inset
 
- temos que a função possui 3 ou 1 ou 0 raizes reais positivas.
+ temos que a função possui 3 ou 1 ou 0 raízes reais positivas.
 \end_layout
 
 \begin_layout Standard
@@ -130,7 +130,7 @@ De
 \begin_inset Formula $T''$
 \end_inset
 
- temos que a funçao possui 0 raizes reais negativas.
+ temos que a função possui 0 raízes reais negativas.
 \end_layout
 
 \begin_layout Standard
@@ -324,7 +324,7 @@ status collapsed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Enumerações possiveis para raizes
+Enumerações possíveis para raizes
 \end_layout
 
 \end_inset
@@ -345,7 +345,7 @@ Enumerações possiveis para raizes
 Cálculo da Raiz Real
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
 Cota de Fujiwara
 \end_layout
 
@@ -380,13 +380,16 @@ M=\left\{ \left|\frac{-4,2}{1}\right|,\left|\frac{5,9}{1}\right|^{\nicefrac{1}{2
 
 \end_layout
 
+\begin_layout Subsection
+Método de Newton
+\end_layout
+
 \begin_layout Standard
-Como sabemos pela enumeração que não há raízes negativas e que há somente
- uma raiz real positiva, 
+Como sabemos pela enumeração que não há raízes negativas, 
 \begin_inset Formula $I=[0;8,4]$
 \end_inset
 
- é um intervalo satisfatório para buscar a raiz.
+ é um intervalo possivel para buscar a raiz positiva.
  Aplicando o método de Newton com 
 \begin_inset Formula $x_{0}=4,2$
 \end_inset
@@ -806,48 +809,20 @@ Com isso, calculamos a raiz real
 Cálculo das Raízes Complexas
 \end_layout
 
-\begin_layout Subsection
-Deflação de Polinômios
-\end_layout
-
 \begin_layout Standard
-O método da deflação para determinação das raízes de um polinômio consiste
- em começar determinando as raízes reais do polinômio por algum método já
- conhecido de cálculo de raizes reais.
- Ao calcular uma raiz real 
-\begin_inset Formula $x_{n}$
-\end_inset
-
-, o polinômio original é dividido por 
-\begin_inset Formula $(x-x_{n})$
+Já possuímos uma raiz real calculada: 
+\begin_inset Formula $x_{1}=2,4646347736$
 \end_inset
 
 .
- O resultado desta operação é um polinômio de grau menor contendo as demais
- raízes do polinômio original.
- O processo repete-se até determinar-se todas as raízes reais.
- Em seguida, procura-se o primeiro par de raízes complexas conjugadas 
-\begin_inset Formula $z_{n}=x_{n}\pm iy_{n}$
-\end_inset
-
-.
- Divide-se, então, o polinômio por 
-\begin_inset Formula $(x-x_{n}-iy_{n})(x-x_{n}+iy_{n})$
-\end_inset
-
- e repete-se o passo até que resulte em um polinômio de segundo grau, quando
- é possível utilizar a fórmula de Bhaskara para cálculo das raízes.
-\end_layout
-
-\begin_layout Standard
-Aplicando o método para a equação 
+ Podemos aplicar o método da deflação de polinômios para a equação 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:1"
 
 \end_inset
 
-:
+ utilizando esta raiz:
 \end_layout
 
 \begin_layout Standard
@@ -855,7 +830,7 @@ reference "eq:1"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -931,7 +906,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $2,.4646347736$
+\begin_inset Formula $2,4646347736$
 \end_inset
 
 
@@ -1074,10 +1049,6 @@ reference "eq:1"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1097,28 +1068,12 @@ Com isto, obtemos o polinômio de segundo grau
 x & = & \frac{1,7353652264\pm\sqrt{(-1,7353652264)^{2}-4\cdot1\cdot1,6229585181}}{2}\\
 x & = & \frac{1,7353652264\pm\sqrt{-3,4803416035}}{2}\\
 x & = & \frac{1,7353652264\pm1,865567368i}{2}\\
-x_{1},x_{2} & = & 0,867682613\pm0,932783684i
+x_{2},x_{3} & = & 0,867682613\pm0,932783684i
 \end{eqnarray*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Localização por Esboço
-\end_layout
-
-\begin_layout Standard
-bah
-\end_layout
-
-\begin_layout Subsection
-Localização por Tabela de Valores da Função
-\end_layout
-
-\begin_layout Standard
-beh
 \end_layout
 
 \end_body
