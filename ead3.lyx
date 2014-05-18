@@ -12,7 +12,7 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
+\font_roman cmr
 \font_sans default
 \font_typewriter default
 \font_default_family default
@@ -830,7 +830,7 @@ reference "eq:1"
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1070,6 +1070,102 @@ x & = & \frac{1,7353652264\pm\sqrt{-3,4803416035}}{2}\\
 x & = & \frac{1,7353652264\pm1,865567368i}{2}\\
 x_{2},x_{3} & = & 0,867682613\pm0,932783684i
 \end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Validação dos Cálculos
+\end_layout
+
+\begin_layout Standard
+Através do software VCN foi possível validar os resultados obtidos:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/vcn1.PNG
+	width 70page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Raízes da equação 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+
+\end_inset
+
+ calculadas pelo software VCN.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/vnc2.PNG
+	width 70page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Gráfico da equação 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+
+\end_inset
+
+ gerado pelo software VCN.
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
