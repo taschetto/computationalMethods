@@ -1,2 +1,0 @@
-Métodos Computacionais - Interpolação
-=======
