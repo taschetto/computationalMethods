@@ -1,0 +1,2225 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language brazilian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman lmodern
+\font_sans default
+\font_typewriter lmtt
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.5cm
+\topmargin 2.5cm
+\rightmargin 1.5cm
+\bottommargin 2.5cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Interpolação 
+\emph on
+\lang english
+Spline
+\end_layout
+
+\begin_layout Author
+Guilherme Taschetto
+\begin_inset Newline newline
+\end_inset
+
+Cristiano Guilloux
+\begin_inset Newline newline
+\end_inset
+
+Ludgero Gil Mascarenhas
+\begin_inset Newline newline
+\end_inset
+
+(Grupo 6)
+\end_layout
+
+\begin_layout Abstract
+Interpolação é o método que permite construir um novo conjunto de dados
+ a partir de um conjunto discreto de dados pontuais previamente conhecidos.
+ Entre os diferentes métodos disponíveis, a interpolação 
+\emph on
+\lang english
+splines
+\emph default
+\lang brazilian
+ possui relevância pois é capaz de fornecer um grau de erro inferior à outros
+ métodos polinomiais.
+ Neste artigo é realizado um estudo sobre interpolação 
+\emph on
+\lang english
+splines
+\emph default
+\lang brazilian
+ através de sua aplicação no ambiente matemático 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+.
+\end_layout
+
+\begin_layout Section
+Introdução
+\end_layout
+
+\begin_layout Standard
+Segundo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wiki2010"
+
+\end_inset
+
+, denomina-se interpolação o método que permite construir um novo conjunto
+ de dados a partir de um conjunto discreto de dados pontuais previamente
+ conhecidos.
+ Em outras palavras, é um método matemático onde é criada, baseando-se em
+ dados discretos obtidos através de uma amostragem, uma função interpoladora
+ cujo objetivo é aproximar o valor ou função originais, sendo capaz de gerar
+ um conjunto maior de dados além da amostragem.
+ As figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraInterpolação"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraRyu"
+
+\end_inset
+
+ ilustram exemplos de aplicação de métodos de interpolação.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagens/Interpolation_example_polynomial.svg
+	width 25page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Dados amostrados e função interpoladora sobreposta.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraInterpolação"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagens/interpolation2.gif
+	width 50page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Comparativo entre imagem original e após passar por um processo de interpolação.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraRyu"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Existem diferentes métodos numéricos de interpolação e suas as aplicações
+ são inúmeras nas áreas de ciências exatas, como matemática científica,
+ economia, computação e engenharia.
+ Entre estes métodos, a interpolação 
+\emph on
+\lang english
+splines
+\emph default
+\lang brazilian
+ possui relevância pois é capaz de fornecer um grau de erro inferior à outros
+ métodos polinomiais mais triviais, e.
+ g.
+ interpolação de Lagrange e interpolação de Newton.
+ Neste artigo é realizado um estudo sobre interpolação 
+\emph on
+\lang english
+splines
+\emph default
+\lang brazilian
+ através de sua aplicação no ambiente matemático 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+.
+\end_layout
+
+\begin_layout Section
+
+\emph on
+\lang english
+Splines
+\emph default
+\lang brazilian
+ Cúbicos
+\end_layout
+
+\begin_layout Standard
+Dada uma função 
+\begin_inset Formula $f$
+\end_inset
+
+ definida no intervalo 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ e um conjunto de pontos 
+\begin_inset Formula $a=x_{0}<x_{1}<\ldots<x_{n}=b$
+\end_inset
+
+, a 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ cúbica interpoladora 
+\begin_inset Formula $S$
+\end_inset
+
+ para 
+\begin_inset Formula $f$
+\end_inset
+
+ é uma função que satisfaz as seguintes condições:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S(x)$
+\end_inset
+
+é um polinômio cúbico no formato 
+\begin_inset Formula $S_{j}(x)=a_{j}+b_{j}(x-x_{j})+c_{j}(x-x_{j})^{2}+d_{j}(x-x_{j})^{3}$
+\end_inset
+
+, válido no intervalo 
+\begin_inset Formula $[x_{j},x_{j+1}]$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n-1$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S(x_{j})=f(x_{j})$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{j+1}(x_{j+1})=S_{j}(x_{j+1})$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n-2$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{j+1}^{'}(x_{j+1})=S_{j}^{'}(x_{j+1})$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n-2$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S_{j+1}^{''}(x_{j+1})=S_{j}^{''}(x_{j+1})$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n-2$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Uma das seguintes condições de limite é satisfeita:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $S^{'''}(x_{0})=S^{''}(x_{n})=0$
+\end_inset
+
+ (limite natural ou livre);
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $S^{'}(x_{0})=f^{'}(x_{0})$
+\end_inset
+
+ e 
+\begin_inset Formula $S^{'}(x_{n})=f^{'}(x_{n})$
+\end_inset
+
+ (limite fixado);
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Cada uma das condições de limite da origem à um tipo de 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+.
+ Quando ocorre a condição de limite natural ocorre, a 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ é chamada de 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ natural.
+ Por outro lado, quando a condição de limite fixado é utilizada, a tendência
+ é obter-se um resultado mais preciso, uma vez leva em conta a informação
+ da derivada da função.
+\end_layout
+
+\begin_layout Section
+Algoritmo e Complexidade
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Burden2008"
+
+\end_inset
+
+ apresenta o algoritmo 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "AlgoritmoSpline"
+
+\end_inset
+
+ para implementação da interpolação 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Entrada 
+\begin_inset Formula $n;$
+\end_inset
+
+ 
+\begin_inset Formula $x_{0},x_{1},\ldots,x_{n};$
+\end_inset
+
+ 
+\begin_inset Formula $a_{1}=f(x_{1}),\ldots,a_{n}=f(x_{n}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Saída 
+\begin_inset Formula $a_{j},b_{j},c_{j},d_{j}$
+\end_inset
+
+ para 
+\begin_inset Formula $j=0,1,\ldots,n-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Passo
+\begin_inset space ~
+\end_inset
+
+1 
+\begin_inset Formula $h_{i}=x_{i+1}-x_{i}$
+\end_inset
+
+ para 
+\begin_inset Formula $i=0,1,\ldots,n-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Passo
+\begin_inset space ~
+\end_inset
+
+2 
+\begin_inset Formula $\alpha_{i}=\frac{3}{h_{i}}(a_{i+1}-a_{i})-\frac{3}{h_{i-1}}(a_{i}-a_{i-1})$
+\end_inset
+
+ para 
+\begin_inset Formula $i=1,2,\ldots,n-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Passo
+\begin_inset space ~
+\end_inset
+
+3 
+\begin_inset Formula $l_{0}=0;\mu_{0}=0;z_{0}=0.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Passo
+\begin_inset space ~
+\end_inset
+
+4 Para 
+\begin_inset Formula $i=1,2,\ldots,n-1$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $l_{i}=2(x_{i+1}-x_{i-1})-h_{i-1}\mu_{i-1};$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\mu_{i}=h_{i}/l_{i};$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $z_{i}=(\alpha_{i}-h_{i-1}z_{i-1})/l_{i}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Passo
+\begin_inset space ~
+\end_inset
+
+5 
+\begin_inset Formula $l_{n}=1;z_{n}=0;c_{n}=0.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Passo
+\begin_inset space ~
+\end_inset
+
+6 Para 
+\begin_inset Formula $j=n-1,n-2,\ldots,0$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $c_{j}=z_{j}-\mu_{j}c_{j+1};$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $b_{j}=(a_{j+1}-a_{j})/h_{j}-h_{j}(c_{j+1}+2c_{j})/3;$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $d_{j}=(c_{j+1}-c_{j})/(3h_{j}).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+Spline
+\emph default
+\lang brazilian
+ Natural Cúbica
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "AlgoritmoSpline"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Os passos 1 e 2 compreendem dois laços de 
+\begin_inset Formula $n$
+\end_inset
+
+ operações: 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Os passos 3 e 5 compreende somente atribuições: 
+\begin_inset Formula $O(1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Os passos 4 e 6 também são compostos por dois laços de 
+\begin_inset Formula $n$
+\end_inset
+
+ operações: 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Como todos os passos
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Os passos 3, 4, 5 e parte do 6 realizam a resolução de um sistema tridiagonal
+ de equações lineares.
+ Ver 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Burden2008"
+
+\end_inset
+
+ páginas 145 e 146 para a definição do sistema e 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Burden2008"
+
+\end_inset
+
+ página 408 para o algoritmo de resolução do sistema.
+\end_layout
+
+\end_inset
+
+ são sequenciais e não há laços aninhados, aplicando as regras de notação
+ assintótica é possível afirmar que a complexidade do algoritmo é 
+\begin_inset Formula $O(n)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Descrição do Problema
+\end_layout
+
+\begin_layout Standard
+De posse de um arquivo 
+\emph on
+JPG
+\emph default
+ contendo símbolos alfabéticos de uma fonte 
+\emph on
+\lang english
+True type
+\emph default
+\lang brazilian
+ fornecida, selecionar um símbolo.
+ Sobre a imagem deste símbolo, realizar a amostragem de um conjunto de 
+\begin_inset Formula $n$
+\end_inset
+
+ coordenadas 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+, de modo a representar, parcialmente, o desenho do símbolo.
+ Com base no conjunto de coordenadas amostradas, criar funções interpoladoras
+ 
+\begin_inset Formula $x=S_{x}(t)$
+\end_inset
+
+ e 
+\begin_inset Formula $y=S_{y}(t)$
+\end_inset
+
+ (
+\begin_inset Formula $t=1,2,\ldots,n$
+\end_inset
+
+), utilizando a interpolação 
+\emph on
+\lang english
+spline
+\lang brazilian
+ 
+\emph default
+cúbica, obtendo uma representação paramétrica do símbolo.
+ De posse das funções interpoladoras, ser capaz de desenhar uma representação
+ da curva original.
+\end_layout
+
+\begin_layout Section
+Solução
+\end_layout
+
+\begin_layout Standard
+A solução foi realizada pela seguinte sequência de passos:
+\end_layout
+
+\begin_layout Enumerate
+Seleção do símbolo alfabético e amostragem de alguns pontos que compõem
+ o símbolo;
+\end_layout
+
+\begin_layout Enumerate
+Geração das funções de interpolação com base nos pontos amostrados;
+\end_layout
+
+\begin_layout Enumerate
+Reconstrução da curva original utilizando as funções interpoladoras.
+\end_layout
+
+\begin_layout Standard
+A listagem de artefatos utilizados na solução encontra-se no apêndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Listagem-de-Artefatos"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Seleção do Símbolo e Amostragem
+\end_layout
+
+\begin_layout Standard
+Selecionou-se o símbolo alfabético X maiúsculo da fonte 
+\emph on
+\lang english
+Invitation
+\lang brazilian
+ Script
+\emph default
+, ilustrado na figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraX"
+
+\end_inset
+
+.
+ Este símbolo foi escolhido devido ao fato de possuir trechos curvos de
+ raios distintos, bem como trechos aproximados com retas, tornando possível
+ avaliar resultados para uma curva com comportamento variado ao longo de
+ seu comprimento.
+ Ao todo foram selecionados 42 pontos, de forma mais densa nos trechos mais
+ curvos do símbolo do que nos trechos mais lineares.
+ O raciocínio utilizado foi de que, em regiões onde a curva é mais reta
+ e comportada, i.
+ e.
+ a derivada da curva é constante ou quase constante, a seleção de muitos
+ pontos gera redundâncias, uma vez que para criar uma reta é preciso de
+ apenas dois pontos.
+\end_layout
+
+\begin_layout Standard
+A amostragem de pontos foi realizada através da ferramenta 
+\emph on
+\lang english
+Path
+\lang brazilian
+ 
+\lang english
+Tool
+\emph default
+\lang brazilian
+ do software 
+\emph on
+\lang english
+Gimp
+\emph default
+\lang brazilian
+.
+ Foi feita a extração
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Detalhe de implementação: antes de utilizar a ferramenta 
+\emph on
+\lang english
+Export
+\lang brazilian
+ 
+\lang english
+Path
+\lang brazilian
+ 
+\emph default
+foi realizado o procedimento 
+\emph on
+\lang english
+Flip
+\lang brazilian
+ Vertical
+\emph default
+, a fim de inverter a imagem verticalmente no 
+\emph on
+\lang english
+Gimp
+\emph default
+\lang brazilian
+.
+ Isto se dá em função do sistema de coordenadas do 
+\emph on
+\lang english
+Gimp
+\lang brazilian
+ 
+\emph default
+utilizar como origem do plano cartesiano o canto superior esquerdo da tela,
+ e não o canto inferior esquerdo, como é comum na matemática e engenharia.
+\end_layout
+
+\end_inset
+
+ do conjunto amostrado utilizando a ferramenta 
+\emph on
+\lang english
+Export
+\lang brazilian
+ 
+\lang english
+Path
+\emph default
+\lang brazilian
+ e salvo em um arquivo 
+\emph on
+\lang english
+SVG
+\emph default
+\lang brazilian
+ encapsulado em um arquivo 
+\emph on
+PNG
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename imagens/letra_gimp.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Letra X maiúscula (
+\emph on
+\lang english
+Invitation
+\lang brazilian
+ Script
+\emph default
+)
+\emph on
+ 
+\emph default
+e
+\emph on
+ 
+\emph default
+seleção de pontos usando a ferramenta 
+\emph on
+\lang english
+Path
+\lang brazilian
+ 
+\lang english
+Tool
+\emph default
+\lang brazilian
+ do software 
+\emph on
+\lang english
+Gimp
+\emph default
+\lang brazilian
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraX"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Utilizando o script 
+\emph on
+\lang english
+Python
+\emph default
+\lang brazilian
+ 
+\emph on
+parse_svg.py
+\emph default
+ (apêndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Listagem-parse_svg.py"
+
+\end_inset
+
+) é possível extrair as coordenadas do arquivo 
+\emph on
+SVG
+\emph default
+ em um arquivo texto 
+\begin_inset Formula $output.txt$
+\end_inset
+
+ com linhas no formato 
+\begin_inset Formula $n\, x\, y$
+\end_inset
+
+, onde 
+\begin_inset Formula $n$
+\end_inset
+
+ é o número sequencial da coordenada (ou seja, a variável livre 
+\begin_inset Formula $t$
+\end_inset
+
+ das funções interpoladoras 
+\begin_inset Formula $S_{x}(t)$
+\end_inset
+
+ e 
+\begin_inset Formula $S_{y}(t)$
+\end_inset
+
+), 
+\begin_inset Formula $x$
+\end_inset
+
+ é o valor da abscissa e 
+\begin_inset Formula $y$
+\end_inset
+
+ o valor da ordenada.
+\end_layout
+
+\begin_layout Standard
+Utilizando o script 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+ 
+\emph on
+\lang english
+splines
+\lang brazilian
+.mac
+\emph default
+ (apêndice 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Listagem-splines.mac"
+
+\end_inset
+
+) é possível ler o arquivo de entrada e criar um gráfico de pontos utilizando
+ as amostras.
+ O resultado é exibido na figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraAmostras"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graph_samples.svg
+	width 70page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Gráfico discreto das amostras.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraAmostras"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Geração das Funções Interpoladoras
+\end_layout
+
+\begin_layout Standard
+No script 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+ 
+\emph on
+\lang english
+splines
+\lang brazilian
+.mac
+\emph default
+ são geradas as funções interpoladoras 
+\begin_inset Formula $S_{x}(t)$
+\end_inset
+
+ e 
+\begin_inset Formula $S_{y}(t)$
+\end_inset
+
+ utilizando a função 
+\begin_inset Formula $csplines$
+\end_inset
+
+ da biblioteca 
+\begin_inset Formula $interpol$
+\end_inset
+
+ do ambiente 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+.
+ Estas funções, representadas graficamente na figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraSxSy"
+
+\end_inset
+
+, são contínuas no intervalo 
+\begin_inset Formula $[1,42]$
+\end_inset
+
+ (onde 
+\begin_inset Formula $42$
+\end_inset
+
+ é o número de amostras originais).
+ Assim, permitem a criação de pontos adicionais para representarmos a curva.
+ Os pontos de inflexão das funções, onde a derivada é zero, denotam as voltas
+ e revoltas que a curva original realiza, enquanto os trechos retilíneos
+ e suaves, com derivada constante, denotam as regiões mais retilíneas e
+ suaves da curva original.
+ O raciocínio de que amostrar muitos pontos nos trechos retos e suaves seria
+ redundância, é corroborado por esta análise, uma vez que a seleção de um
+ número maior de pontos entre 
+\begin_inset Formula $[20,30]$
+\end_inset
+
+, por exemplo, não iria alterar significativamente o comportamento das funções
+ interpoladoras nesta região, onde possuem comportamento linear ou próximo
+ do linear.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graph_sx.svg
+	width 70page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Representação gráfica das funções interpoladoras 
+\begin_inset Formula $S_{x}(t)$
+\end_inset
+
+ e 
+\begin_inset Formula $S_{y}(t)$
+\end_inset
+
+ sendo que 
+\begin_inset Formula $t\in[1,42]$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraSxSy"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Reconstrução da Curva
+\end_layout
+
+\begin_layout Standard
+De posse das funções interpoladoras 
+\begin_inset Formula $S_{x}(t)$
+\end_inset
+
+ e 
+\begin_inset Formula $S_{y}(t)$
+\end_inset
+
+ e sabendo que as mesmas representam a curva de forma paramétrica, o script
+ script 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+ 
+\emph on
+\lang english
+splines
+\lang brazilian
+.mac
+\emph default
+ utiliza recurso do ambiente para desenhar um gráfico paramétrico, ilustrado
+ na figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "FiguraResultados"
+
+\end_inset
+
+.
+ Uma propriedade da interpolação 
+\lang english
+spline
+\lang brazilian
+ muito relevante neste momento é 
+\begin_inset Formula $S(x_{j})=f(x_{j})$
+\end_inset
+
+ para cada 
+\begin_inset Formula $j=0,1,\ldots,n$
+\end_inset
+
+.
+ Isto significa dizer que a função interpoladora possui o mesmo valor que
+ a função original quando o argumento é um dos pontos da amostragem original.
+ Em outras palavras, isso significa que a curva interpolada passará por
+ todos os pontos originais, fato observado no resultado.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graph_both.svg
+	width 70page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Resultado da interpolação 
+\emph on
+\lang english
+spline
+\emph default
+\lang brazilian
+ natural sobreposto à amostragem original.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "FiguraResultados"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusões
+\end_layout
+
+\begin_layout Standard
+Ao estudar e experimentar métodos numéricos de interpolação fica clara a
+ importância destas ferramentas na vida cotidiana, seja ela pessoal, profissiona
+l ou científica.
+ A interpolação 
+\emph on
+\lang english
+spline
+\lang brazilian
+ 
+\emph default
+é um destes métodos, podendo ser aplicado para solucionar uma imensa gama
+ de problemas, dentre eles o apresentado neste artigo - reconstituição de
+ uma curva utilizando uma amostragem de pontos.
+ O resultado idêntico à curva original sem grande esforço computacional,
+ sendo a sua complexidade 
+\begin_inset Formula $O(n)$
+\end_inset
+
+ em notação assintótica.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "1"
+key "Campos2007"
+
+\end_inset
+
+CAMPOS FILHO, F.
+ F.
+ Algoritmos numéricos.
+ Belo Horizonte: Editora LTC, 2007.
+ 419 p.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "2"
+key "Burden2008"
+
+\end_inset
+
+
+\lang english
+BURDEN; R.
+ L.; FAIRES, J.
+ D.
+ Numerical Analysis.
+ Boston: Brooks/Cole CENGAGE Learning, 2010.
+ 888 p.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+label "3"
+key "Wiki2010"
+
+\end_inset
+
+Interpolação – Wikipédia, a enciclopédia livre.
+ Disponível em: <
+\begin_inset CommandInset href
+LatexCommand href
+name "http://pt.wikipedia.org/wiki/Interpola%C3%A7%C3%A3o"
+target "http://pt.wikipedia.org/wiki/Interpola%C3%A7%C3%A3o"
+
+\end_inset
+
+>.
+ Acesso em 07/04/2014.
+ 
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Listagem de Artefatos
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Listagem-de-Artefatos"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\emph on
+\lang english
+Gimp
+\emph default
+\lang brazilian
+ Software de edição de imagens.
+ Utilizado para selecionar e extrair um conjunto de pontos (amostras) da
+ figura original.
+\end_layout
+
+\begin_layout Description
+
+\emph on
+parse_svg.py
+\emph default
+ Script na linguagem 
+\emph on
+\lang english
+Python
+\emph default
+\lang brazilian
+.
+ Utilizado para extração dos dados do formato gerado pelo 
+\emph on
+\lang english
+Gimp
+\emph default
+\lang brazilian
+ para formato texto, mais fácil de manipular utilizando linguagens de programaçã
+o.
+\end_layout
+
+\begin_layout Description
+
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+ Ambiente matemático computacional, escrito em linguagem 
+\emph on
+\lang english
+Lisp
+\emph default
+\lang brazilian
+.
+ Utilizado para leitura dos dados de entrada, cálculo das funções interpoladoras
+ e geração dos gráficos.
+\end_layout
+
+\begin_layout Description
+
+\emph on
+\lang english
+splines
+\lang brazilian
+.mac
+\emph default
+ Script na linguagem 
+\emph on
+\lang latin
+Maxima
+\emph default
+\lang brazilian
+.
+ Utilizado para armazenar a sequência de comandos necessários para a realização
+ do projeto.
+\end_layout
+
+\begin_layout Section
+Listagem 
+\emph on
+parse_svg.py
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Listagem-parse_svg.py"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},language=Python,numbers=left,numberstyle={\small},showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+import xml.etree.ElementTree as etree
+\end_layout
+
+\begin_layout Plain Layout
+
+import re
+\end_layout
+
+\begin_layout Plain Layout
+
+import sys
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+__author__ = 'Ramon Costi Fernandes <ramon.fernandes@acad.pucrs.br>'
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+SVG_namespace = "http://www.w3.org/2000/svg"
+\end_layout
+
+\begin_layout Plain Layout
+
+SVG_fname = ''
+\end_layout
+
+\begin_layout Plain Layout
+
+OUTPUT_fname = 'output.txt'
+\end_layout
+
+\begin_layout Plain Layout
+
+coordinates_list = []
+\end_layout
+
+\begin_layout Plain Layout
+
+output_list = []
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#Instrucoes de uso.
+\end_layout
+
+\begin_layout Plain Layout
+
+def usage():
+\end_layout
+
+\begin_layout Plain Layout
+
+	print("Como executar:
+\backslash
+n")
+\end_layout
+
+\begin_layout Plain Layout
+
+	print("{} <{}>".format(sys.argv[0], "SVG input file"))
+\end_layout
+
+\begin_layout Plain Layout
+
+	print("ou")
+\end_layout
+
+\begin_layout Plain Layout
+
+	print("{} <{}> <{}>".format(sys.argv[0], "SVG input file", "OUTPUT file"))
+\end_layout
+
+\begin_layout Plain Layout
+
+	sys.exit(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Remove as coordenadas duplicadas do arquivo SVG de entrada.
+\end_layout
+
+\begin_layout Plain Layout
+
+def remove_duplicates(coord_list):
+\end_layout
+
+\begin_layout Plain Layout
+
+	global coordinates_list
+\end_layout
+
+\begin_layout Plain Layout
+
+	temp_list = []
+\end_layout
+
+\begin_layout Plain Layout
+
+	for item in coord_list:
+\end_layout
+
+\begin_layout Plain Layout
+
+		if item not in temp_list:
+\end_layout
+
+\begin_layout Plain Layout
+
+			temp_list.append(item)
+\end_layout
+
+\begin_layout Plain Layout
+
+	coordinates_list = temp_list
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#Enumera os pontos.
+\end_layout
+
+\begin_layout Plain Layout
+
+def enumerate_coordinates():
+\end_layout
+
+\begin_layout Plain Layout
+
+	count = 1
+\end_layout
+
+\begin_layout Plain Layout
+
+	for item in coordinates_list:
+\end_layout
+
+\begin_layout Plain Layout
+
+		coord = re.split(",", item)
+\end_layout
+
+\begin_layout Plain Layout
+
+		output_list.append("{} {} {}
+\backslash
+n".format(count, coord[0], coord[1]))
+\end_layout
+
+\begin_layout Plain Layout
+
+		count += 1
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#Gera o arquivo de saida.
+\end_layout
+
+\begin_layout Plain Layout
+
+def write_output_file():
+\end_layout
+
+\begin_layout Plain Layout
+
+	file = open(OUTPUT_fname, "w+")
+\end_layout
+
+\begin_layout Plain Layout
+
+	for item in output_list:
+\end_layout
+
+\begin_layout Plain Layout
+
+		file.write("".join(str(s) for s in item) + "
+\backslash
+n")
+\end_layout
+
+\begin_layout Plain Layout
+
+	file.close()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#Processa o arquivo XML de entrada.
+\end_layout
+
+\begin_layout Plain Layout
+
+def parse_xml():
+\end_layout
+
+\begin_layout Plain Layout
+
+	global coordinates_list
+\end_layout
+
+\begin_layout Plain Layout
+
+	tree = etree.parse(SVG_fname)
+\end_layout
+
+\begin_layout Plain Layout
+
+	root = tree.getroot()
+\end_layout
+
+\begin_layout Plain Layout
+
+	coordinates = root.find('.//{%s}path' % SVG_namespace).get("d")
+\end_layout
+
+\begin_layout Plain Layout
+
+	coordinates_list = re.findall("[0-9]+
+\backslash
+.[0-9]+,[0-9]+
+\backslash
+.[0-9]+", coordinates)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+if __name__ == "__main__":
+\end_layout
+
+\begin_layout Plain Layout
+
+	if len(sys.argv) < 2:
+\end_layout
+
+\begin_layout Plain Layout
+
+		usage()
+\end_layout
+
+\begin_layout Plain Layout
+
+	elif len(sys.argv) < 3:
+\end_layout
+
+\begin_layout Plain Layout
+
+		print("Gravando resultados no arquivo de saida 
+\backslash
+"{}
+\backslash
+"
+\backslash
+n".format(OUTPUT_fname))
+\end_layout
+
+\begin_layout Plain Layout
+
+	elif len(sys.argv) == 3:
+\end_layout
+
+\begin_layout Plain Layout
+
+		OUTPUT_fname = sys.argv[2]
+\end_layout
+
+\begin_layout Plain Layout
+
+		print("Gravando resultados no arquivo de saida 
+\backslash
+"{}
+\backslash
+"
+\backslash
+n".format(OUTPUT_fname))
+\end_layout
+
+\begin_layout Plain Layout
+
+	else:
+\end_layout
+
+\begin_layout Plain Layout
+
+		usage()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	SVG_fname = sys.argv[1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	parse_xml()
+\end_layout
+
+\begin_layout Plain Layout
+
+	remove_duplicates(coordinates_list)
+\end_layout
+
+\begin_layout Plain Layout
+
+	enumerate_coordinates()
+\end_layout
+
+\begin_layout Plain Layout
+
+	write_output_file()
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Listagem 
+\emph on
+\lang english
+splines
+\lang brazilian
+.mac
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Listagem-splines.mac"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\small\ttfamily},language=Lisp,numbers=left,numberstyle={\small},showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+/* Author: Guilherme Taschetto (gtaschetto@gmail.com)  */
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+load(interpol)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+input_data: read_matrix("output.txt")$
+\end_layout
+
+\begin_layout Plain Layout
+
+samples: makelist([second(input_data[i]), third(input_data[i])], i, 1, length(in
+put_data))$
+\end_layout
+
+\begin_layout Plain Layout
+
+x: submatrix(input_data, 3)$
+\end_layout
+
+\begin_layout Plain Layout
+
+y: submatrix(input_data, 2)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+cspline(x)$
+\end_layout
+
+\begin_layout Plain Layout
+
+Sx(x) := ''%$
+\end_layout
+
+\begin_layout Plain Layout
+
+cspline(y)$
+\end_layout
+
+\begin_layout Plain Layout
+
+Sy(x) := ''%$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot2d(
+\end_layout
+
+\begin_layout Plain Layout
+
+	[discrete, samples],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[style, [points, 1, 2, 1]],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[legend, "Amostras"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[xlabel, ""],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[ylabel, ""],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_term, "svg size 520,310"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_out_file, "graph_samples.svg"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_preamble, "set key bottom"]
+\end_layout
+
+\begin_layout Plain Layout
+
+)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot2d(
+\end_layout
+
+\begin_layout Plain Layout
+
+	[Sx(t), Sy(t)],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[t, 1, 42],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[xlabel, "t"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[ylabel, ""],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[legend,
+\end_layout
+
+\begin_layout Plain Layout
+
+		"Sx(t)",
+\end_layout
+
+\begin_layout Plain Layout
+
+		"Sy(t)"
+\end_layout
+
+\begin_layout Plain Layout
+
+	],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[style,
+\end_layout
+
+\begin_layout Plain Layout
+
+		[lines, 2, 2],
+\end_layout
+
+\begin_layout Plain Layout
+
+		[lines, 2, 1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_term, "svg size 520,310"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_out_file, "graph_sx.svg"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_preamble, "set key bottom"]
+\end_layout
+
+\begin_layout Plain Layout
+
+)$
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot2d(
+\end_layout
+
+\begin_layout Plain Layout
+
+	[
+\end_layout
+
+\begin_layout Plain Layout
+
+		[parametric, Sx(t), Sy(t), [t, 1, 42]],
+\end_layout
+
+\begin_layout Plain Layout
+
+		[discrete, samples]
+\end_layout
+
+\begin_layout Plain Layout
+
+	],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[legend,
+\end_layout
+
+\begin_layout Plain Layout
+
+		"Splines",
+\end_layout
+
+\begin_layout Plain Layout
+
+		"Amostras"
+\end_layout
+
+\begin_layout Plain Layout
+
+	],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[style,
+\end_layout
+
+\begin_layout Plain Layout
+
+		[lines, 2, 1],
+\end_layout
+
+\begin_layout Plain Layout
+
+		[points, 1, 2, 1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[nticks, 42 * 4],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_term, "svg size 520,310"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_out_file, "graph_both.svg"],
+\end_layout
+
+\begin_layout Plain Layout
+
+	[gnuplot_preamble, "set key bottom"]
+\end_layout
+
+\begin_layout Plain Layout
+
+)$
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
